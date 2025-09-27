@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Harga Produk</title>
+    <title>Farid Shop Official - Daftar Harga</title>
     <style>
+        /* Reset dan dasar */
         * {
             margin: 0;
             padding: 0;
@@ -13,279 +14,543 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
             min-height: 100vh;
-            padding: 20px;
+            padding-bottom: 50px;
+        }
+        
+        /* Header dan Navigasi */
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
         
         .container {
-            max-width: 1000px;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
         }
         
-        header {
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 126, 179, 0.5);
+        }
+        
+        .logo span {
+            color: #ff7eb3;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        nav a:hover {
+            background: rgba(255, 126, 179, 0.2);
+            color: #ff7eb3;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ff7eb3" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,197.3C1248,203,1344,149,1392,122.7L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #ccc;
+        }
+        
+        /* Animasi karakter anime */
+        .anime-character {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(255, 126, 179, 0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .anime-character::before, .anime-character::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+        }
+        
+        .anime-character::before {
+            width: 60px;
+            height: 60px;
+            top: 40px;
+            left: 50px;
+            box-shadow: 80px 0 0 #fff;
+        }
+        
+        .anime-character::after {
+            width: 40px;
+            height: 20px;
+            top: 70px;
+            left: 70px;
+            border-radius: 0 0 20px 20px;
+            background: #ff758c;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        
+        /* Section Produk */
+        .products {
+            padding: 60px 0;
+        }
+        
+        .section-title {
             text-align: center;
             margin-bottom: 40px;
-            color: white;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-        
-        .price-list-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-        }
-        
-        .price-card {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            overflow: hidden;
+        .section-title::after {
+            content: '';
+            position: absolute;
             width: 100%;
-            max-width: 450px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 3px;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            bottom: -10px;
+            left: 0;
+            border-radius: 3px;
         }
         
-        .price-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        .product-category {
+            margin-bottom: 60px;
         }
         
-        .card-header {
-            background: linear-gradient(to right, #3498db, #2c3e50);
-            color: white;
-            padding: 20px;
-            text-align: center;
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         
-        .card-header h2 {
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 126, 179, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 126, 179, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .product-card:hover::before {
+            left: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 126, 179, 0.5);
+        }
+        
+        .product-card h3 {
             font-size: 1.5rem;
-            margin: 0;
-        }
-        
-        .price-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .price-item:last-child {
-            border-bottom: none;
-        }
-        
-        .price-item:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        
-        .product-name {
-            font-weight: 600;
-            color: #2c3e50;
+            margin-bottom: 15px;
+            color: #ff7eb3;
         }
         
         .price {
-            font-weight: 700;
-            color: #e74c3c;
-            font-size: 1.1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff758c;
+            margin: 15px 0;
         }
         
-        .contact-section {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 30px;
+        .product-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .product-features li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .product-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff7eb3;
+            font-weight: bold;
+        }
+        
+        /* Tombol */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(255, 126, 179, 0.3);
         }
         
-        .contact-section h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 126, 179, 0.5);
         }
         
-        .contact-links {
+        .btn-wa {
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-wa:hover {
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .social-links {
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
+            margin: 20px 0;
         }
         
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 25px;
-            background: linear-gradient(to right, #25D366, #128C7E);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
-        .channel-btn {
-            background: linear-gradient(to right, #7289da, #5a6dba);
-        }
-        
-        .contact-btn:hover {
+        .social-links a:hover {
+            color: #ff7eb3;
             transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(0,0,0,0.3);
         }
         
-        .contact-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: white;
-            opacity: 0.8;
+        .copyright {
+            color: #ccc;
             font-size: 0.9rem;
         }
         
+        /* Responsif */
         @media (max-width: 768px) {
-            .price-list-container {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
                 flex-direction: column;
                 align-items: center;
-            }
-            
-            .price-card {
-                width: 100%;
-            }
-            
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .contact-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>DAFTAR HARGA PRODUK</h1>
-            <p class="subtitle">Harga terbaik untuk kebutuhan digital marketing Anda</p>
-        </header>
-        
-        <div class="price-list-container">
-            <!-- Kartu Harga Sewa Bot Push -->
-            <div class="price-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-robot"></i> SEWA BOT PUSH KONTAK</h2>
-                </div>
-                <div class="card-body">
-                    <div class="price-item">
-                        <span class="product-name">1 Hari</span>
-                        <span class="price">2.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">2 Hari</span>
-                        <span class="price">3.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">4 Hari</span>
-                        <span class="price">4.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">5 Hari</span>
-                        <span class="price">5.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">1 Minggu</span>
-                        <span class="price">10.000K</span>
-                    </div>
-                </div>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Farid Shop <span>Official</span></h1>
             </div>
-            
-            <!-- Kartu Harga Sewa Panel Run Bot -->
-            <div class="price-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-server"></i> SEWA PANEL RUN BOT</h2>
+            <nav>
+                <ul>
+                    <li><a href="#sewa-bot">Sewa Bot</a></li>
+                    <li><a href="#buy-panel">Buy Panel</a></li>
+                    <li><a href="#lainnya">Lainnya</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="anime-character"></div>
+            <h2>Daftar Harga Produk Farid Shop</h2>
+            <p>Temukan berbagai layanan bot push kontak dan panel dengan harga terbaik. Kualitas premium dengan harga terjangkau!</p>
+        </div>
+    </section>
+    
+    <section class="products" id="sewa-bot">
+        <div class="container">
+            <h2 class="section-title">Sewa Bot Push Kontak</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>1 Hari</h3>
+                    <div class="price">2.000K</div>
+                    <ul class="product-features">
+                        <li>Akses bot push kontak 24 jam</li>
+                        <li>Support teknis selama sewa</li>
+                        <li>Gratis update fitur</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
                 </div>
-                <div class="card-body">
-                    <div class="price-item">
-                        <span class="product-name">RAM 1GB</span>
-                        <span class="price">1.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">RAM 2GB</span>
-                        <span class="price">2.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">RAM 3GB</span>
-                        <span class="price">3.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">RAM 4GB</span>
-                        <span class="price">4.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">RAM 5GB</span>
-                        <span class="price">5.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">RAM Unlimited</span>
-                        <span class="price">10.000K</span>
-                    </div>
+                
+                <div class="product-card">
+                    <h3>2 Hari</h3>
+                    <div class="price">3.000K</div>
+                    <ul class="product-features">
+                        <li>Akses bot push kontak 48 jam</li>
+                        <li>Support teknis selama sewa</li>
+                        <li>Gratis update fitur</li>
+                        <li>Bonus fitur tambahan</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
                 </div>
-            </div>
-            
-            <!-- Kartu Harga Lainnya -->
-            <div class="price-card">
-                <div class="card-header">
-                    <h2><i class="fas fa-cogs"></i> PRODUK LAINNYA</h2>
+                
+                <div class="product-card">
+                    <h3>4 Hari</h3>
+                    <div class="price">4.000K</div>
+                    <ul class="product-features">
+                        <li>Akses bot push kontak 96 jam</li>
+                        <li>Support teknis selama sewa</li>
+                        <li>Gratis update fitur</li>
+                        <li>Bonus fitur tambahan</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
                 </div>
-                <div class="card-body">
-                    <div class="price-item">
-                        <span class="product-name">Rename SC Khusus Bot Push Kontak</span>
-                        <span class="price">5.000K</span>
-                    </div>
-                    <div class="price-item">
-                        <span class="product-name">Buy SC Khusus Push Kontak (All Fitur)</span>
-                        <span class="price">5.000K</span>
-                    </div>
+                
+                <div class="product-card">
+                    <h3>5 Hari</h3>
+                    <div class="price">5.000K</div>
+                    <ul class="product-features">
+                        <li>Akses bot push kontak 120 jam</li>
+                        <li>Support teknis selama sewa</li>
+                        <li>Gratis update fitur</li>
+                        <li>Bonus fitur tambahan</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>1 Minggu</h3>
+                    <div class="price">10.000K</div>
+                    <ul class="product-features">
+                        <li>Akses bot push kontak 7 hari</li>
+                        <li>Support teknis selama sewa</li>
+                        <li>Gratis update fitur</li>
+                        <li>Bonus fitur premium</li>
+                        <li>Prioritas support</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
                 </div>
             </div>
         </div>
-        
-        <!-- Bagian Kontak -->
-        <div class="contact-section">
-            <h2>Hubungi Kami</h2>
-            <div class="contact-links">
-                <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="contact-btn channel-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Saluran WhatsApp
-                </a>
-                <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="contact-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
-                </a>
+    </section>
+    
+    <section class="products" id="buy-panel">
+        <div class="container">
+            <h2 class="section-title">Buy Panel Run Bot</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>RAM 1GB</h3>
+                    <div class="price">1.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM 1GB</li>
+                        <li>Stabil untuk bot sederhana</li>
+                        <li>Support 24/7</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>RAM 2GB</h3>
+                    <div class="price">2.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM 2GB</li>
+                        <li>Cocok untuk bot menengah</li>
+                        <li>Support 24/7</li>
+                        <li>Backup data reguler</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>RAM 3GB</h3>
+                    <div class="price">3.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM 3GB</li>
+                        <li>Optimal untuk bot kompleks</li>
+                        <li>Support 24/7</li>
+                        <li>Backup data reguler</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>RAM 4GB</h3>
+                    <div class="price">4.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM 4GB</li>
+                        <li>Powerful untuk bot berat</li>
+                        <li>Support 24/7</li>
+                        <li>Backup data reguler</li>
+                        <li>Monitoring real-time</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>RAM 5GB</h3>
+                    <div class="price">5.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM 5GB</li>
+                        <li>Sangat powerful</li>
+                        <li>Support 24/7</li>
+                        <li>Backup data reguler</li>
+                        <li>Monitoring real-time</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>RAM Unlimited</h3>
+                    <div class="price">10.000K</div>
+                    <ul class="product-features">
+                        <li>Panel dengan RAM Unlimited</li>
+                        <li>Maximum performance</li>
+                        <li>Support 24/7 prioritas</li>
+                        <li>Backup data reguler</li>
+                        <li>Monitoring real-time</li>
+                        <li>Fitur premium semua</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Beli Sekarang</a>
+                </div>
             </div>
         </div>
-        
-        <footer>
-            <p>&copy; 2023 Daftar Harga Produk. All rights reserved.</p>
-        </footer>
-    </div>
+    </section>
+    
+    <section class="products" id="lainnya">
+        <div class="container">
+            <h2 class="section-title">Layanan Lainnya</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <h3>Rename SC Khusus Push Kontak</h3>
+                    <div class="price">5.000K</div>
+                    <ul class="product-features">
+                        <li>Custom script push kontak</li>
+                        <li>Optimasi performa</li>
+                        <li>Support teknis</li>
+                        <li>Update berkala</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Pesan Sekarang</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Buy SC Khusus Push Kontak</h3>
+                    <div class="price">Custom</div>
+                    <ul class="product-features">
+                        <li>Script push kontak lengkap</li>
+                        <li>Semua fitur tersedia</li>
+                        <li>Support teknis premium</li>
+                        <li>Update seumur hidup</li>
+                        <li>Dokumentasi lengkap</li>
+                    </ul>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa">Konsultasi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="products" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="margin-bottom: 30px;">Minat dengan layanan kami? Jangan ragu untuk menghubungi kami melalui WhatsApp atau kunjungi saluran resmi Farid Shop Official.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-wa" style="width: 250px;">Hubungi via WhatsApp</a>
+                    <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="btn" style="width: 250px;">Saluran Resmi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://wa.me/message/VPYX6NSN7T7UH1">WhatsApp</a>
+                <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W">Channel</a>
+            </div>
+            <p class="copyright">&copy; 2023 Farid Shop Official. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
