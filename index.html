@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Harga Produk</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .price-list-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .price-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price-item:last-child {
+            border-bottom: none;
+        }
+        
+        .price-item:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: #e74c3c;
+            font-size: 1.1rem;
+        }
+        
+        .contact-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .contact-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: linear-gradient(to right, #25D366, #128C7E);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .channel-btn {
+            background: linear-gradient(to right, #7289da, #5a6dba);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0,0,0,0.3);
+        }
+        
+        .contact-btn i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .price-list-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .price-card {
+                width: 100%;
+            }
+            
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DAFTAR HARGA PRODUK</h1>
+            <p class="subtitle">Harga terbaik untuk kebutuhan digital marketing Anda</p>
+        </header>
+        
+        <div class="price-list-container">
+            <!-- Kartu Harga Sewa Bot Push -->
+            <div class="price-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-robot"></i> SEWA BOT PUSH KONTAK</h2>
+                </div>
+                <div class="card-body">
+                    <div class="price-item">
+                        <span class="product-name">1 Hari</span>
+                        <span class="price">2.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">2 Hari</span>
+                        <span class="price">3.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">4 Hari</span>
+                        <span class="price">4.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">5 Hari</span>
+                        <span class="price">5.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">1 Minggu</span>
+                        <span class="price">10.000K</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kartu Harga Sewa Panel Run Bot -->
+            <div class="price-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-server"></i> SEWA PANEL RUN BOT</h2>
+                </div>
+                <div class="card-body">
+                    <div class="price-item">
+                        <span class="product-name">RAM 1GB</span>
+                        <span class="price">1.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">RAM 2GB</span>
+                        <span class="price">2.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">RAM 3GB</span>
+                        <span class="price">3.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">RAM 4GB</span>
+                        <span class="price">4.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">RAM 5GB</span>
+                        <span class="price">5.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">RAM Unlimited</span>
+                        <span class="price">10.000K</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Kartu Harga Lainnya -->
+            <div class="price-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-cogs"></i> PRODUK LAINNYA</h2>
+                </div>
+                <div class="card-body">
+                    <div class="price-item">
+                        <span class="product-name">Rename SC Khusus Bot Push Kontak</span>
+                        <span class="price">5.000K</span>
+                    </div>
+                    <div class="price-item">
+                        <span class="product-name">Buy SC Khusus Push Kontak (All Fitur)</span>
+                        <span class="price">5.000K</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bagian Kontak -->
+        <div class="contact-section">
+            <h2>Hubungi Kami</h2>
+            <div class="contact-links">
+                <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="contact-btn channel-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Saluran WhatsApp
+                </a>
+                <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="contact-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2023 Daftar Harga Produk. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
