@@ -3,172 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Harga - Buri Tua</title>
+    <title>Daftar Harga Bot Push Kontak</title>
     <style>
-        /* Reset CSS */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Variabel Warna */
-        :root {
-            --primary-color: #8B4513; /* Warna coklat tua */
-            --secondary-color: #D2B48C; /* Warna tan */
-            --accent-color: #654321; /* Warna coklat lebih tua */
-            --text-color: #F5F5DC; /* Warna beige */
-            --background-color: #2F1B14; /* Warna coklat gelap */
-        }
-
-        /* Body dan Background */
         body {
-            font-family: 'Georgia', serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            background-image: url('https://files.catbox.moe/810tg8.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-blend-mode: overlay;
-            background-color: rgba(47, 27, 20, 0.9);
+            background-color: #e6f7ff;
+            color: #333;
             line-height: 1.6;
         }
 
-        /* Container Utama */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
 
-        /* Header */
         header {
-            text-align: center;
+            background-color: #4da6ff;
+            color: white;
             padding: 30px 0;
-            background-color: rgba(139, 69, 19, 0.8);
+            text-align: center;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .logo {
-            max-width: 200px;
-            height: auto;
+            max-width: 150px;
             margin-bottom: 15px;
-            border-radius: 5px;
-            border: 3px solid var(--secondary-color);
+            border-radius: 10px;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: var(--secondary-color);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             margin-bottom: 10px;
         }
 
-        /* Section Styling */
-        section {
-            background-color: rgba(139, 69, 19, 0.8);
-            margin-bottom: 30px;
-            padding: 25px;
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #4da6ff;
         }
 
         h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 10px;
+            color: #0066cc;
             margin-bottom: 20px;
             font-size: 1.8rem;
+            border-bottom: 2px solid #e6f7ff;
+            padding-bottom: 10px;
         }
 
-        /* Tabel Harga */
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
+        .price-list {
+            list-style-type: none;
         }
 
-        .price-table th, .price-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--secondary-color);
+        .price-list li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f0f9ff;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .price-table th {
-            background-color: var(--accent-color);
-            color: var(--text-color);
+        .price-list li:hover {
+            background-color: #e1f5fe;
+            transform: translateY(-2px);
+        }
+
+        .price-item {
             font-weight: bold;
         }
 
-        .price-table tr:nth-child(even) {
-            background-color: rgba(210, 180, 140, 0.2);
+        .price-value {
+            color: #0066cc;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        .price-table tr:hover {
-            background-color: rgba(210, 180, 140, 0.3);
+        .price-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin-left: 10px;
         }
 
-        /* Link Styling */
-        .whatsapp-link {
+        .channels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .channel {
+            flex: 1;
+            min-width: 250px;
+            background-color: #f0f9ff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .channel:hover {
+            background-color: #e1f5fe;
+            transform: translateY(-3px);
+        }
+
+        .channel a {
             display: inline-block;
-            background-color: #25D366;
+            background-color: #4da6ff;
             color: white;
             padding: 12px 25px;
-            text-decoration: none;
             border-radius: 5px;
+            text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-
-        .whatsapp-link:hover {
-            background-color: #128C7E;
-        }
-
-        .channel-link {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: var(--text-color);
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
             margin-top: 10px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
-        .channel-link:hover {
-            background-color: var(--primary-color);
+        .channel a:hover {
+            background-color: #0066cc;
         }
 
-        /* Footer */
         footer {
             text-align: center;
+            margin-top: 40px;
             padding: 20px;
-            margin-top: 30px;
-            background-color: rgba(139, 69, 19, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            color: #666;
+            font-size: 0.9rem;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .price-list li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .price-value {
+                margin-top: 5px;
             }
             
             h1 {
                 font-size: 2rem;
             }
             
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .price-table th, .price-table td {
-                padding: 8px 10px;
-                font-size: 0.9rem;
+            .channels {
+                flex-direction: column;
             }
         }
     </style>
@@ -176,140 +172,134 @@
 <body>
     <div class="container">
         <header>
-            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo Buri Tua" class="logo">
-            <h1>Daftar Harga Buri Tua</h1>
+            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo" class="logo">
+            <h1>Daftar Harga Bot Push Kontak</h1>
+            <p class="subtitle">Layanan terbaik dengan harga terjangkau</p>
         </header>
 
-        <section>
-            <h2>Harga Bot Push Kontak</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Paket</th>
-                        <th>Harga</th>
-                        <th>Fitur</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1 Hari</td>
-                        <td>2.000K</td>
-                        <td>FREE Pemasangan</td>
-                    </tr>
-                    <tr>
-                        <td>2 Hari</td>
-                        <td>3.000K</td>
-                        <td>FREE Pemasangan</td>
-                    </tr>
-                    <tr>
-                        <td>3 Hari</td>
-                        <td>4.000K</td>
-                        <td>FREE Pemasangan</td>
-                    </tr>
-                    <tr>
-                        <td>5 Hari</td>
-                        <td>5.000K</td>
-                        <td>FREE Pemasangan</td>
-                    </tr>
-                    <tr>
-                        <td>1 Minggu</td>
-                        <td>10.000K</td>
-                        <td>FREE Pemasangan</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="section">
+            <h2>HARGA BOT PUSH KONTAK</h2>
+            <ul class="price-list">
+                <li>
+                    <span class="price-item">1 HARI</span>
+                    <div>
+                        <span class="price-value">2.000K</span>
+                        <span class="price-note">/ FREE Pemasangan</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="price-item">2 HARI</span>
+                    <div>
+                        <span class="price-value">3.000K</span>
+                        <span class="price-note">/ FREE Pemasangan</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="price-item">3 HARI</span>
+                    <div>
+                        <span class="price-value">4.000K</span>
+                        <span class="price-note">/ FREE Pemasangan</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="price-item">5 HARI</span>
+                    <div>
+                        <span class="price-value">5.000K</span>
+                        <span class="price-note">/ FREE Pemasangan</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="price-item">1 MINGGU</span>
+                    <div>
+                        <span class="price-value">10.000K</span>
+                        <span class="price-note">/ FREE Pemasangan</span>
+                    </div>
+                </li>
+            </ul>
         </section>
 
-        <section>
-            <h2>Harga Buy Panel Run Bot</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Spesifikasi</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>RAM 1GB CPU 30%</td>
-                        <td>3K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 2GB CPU 50%</td>
-                        <td>5K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 3GB CPU 70%</td>
-                        <td>7K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 4GB CPU 90%</td>
-                        <td>8K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 5GB CPU 100%</td>
-                        <td>9K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 6GB CPU 120%</td>
-                        <td>10K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 7GB CPU 140%</td>
-                        <td>12K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 8GB CPU 160%</td>
-                        <td>13K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 9GB CPU 180%</td>
-                        <td>14K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM 10GB CPU 200%</td>
-                        <td>15K</td>
-                    </tr>
-                    <tr>
-                        <td>RAM UNLI GB CPU UNLI</td>
-                        <td>17K</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="section">
+            <h2>HARGA BUY PANEL RUN BOT</h2>
+            <ul class="price-list">
+                <li>
+                    <span class="price-item">RAM 1GB CPU 30%</span>
+                    <span class="price-value">3K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 2GB CPU 50%</span>
+                    <span class="price-value">5K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 3GB CPU 70%</span>
+                    <span class="price-value">7K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 4GB CPU 90%</span>
+                    <span class="price-value">8K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 5GB CPU 100%</span>
+                    <span class="price-value">9K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 6GB CPU 120%</span>
+                    <span class="price-value">10K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 7GB CPU 140%</span>
+                    <span class="price-value">12K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 8GB CPU 160%</span>
+                    <span class="price-value">13K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 9GB CPU 180%</span>
+                    <span class="price-value">14K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM 10GB CPU 200%</span>
+                    <span class="price-value">15K</span>
+                </li>
+                <li>
+                    <span class="price-item">RAM UNLI GB CPU UNLI</span>
+                    <span class="price-value">17K</span>
+                </li>
+            </ul>
         </section>
 
-        <section>
-            <h2>Layanan Lainnya</h2>
-            <table class="price-table">
-                <thead>
-                    <tr>
-                        <th>Layanan</th>
-                        <th>Harga</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Open Rename SC</td>
-                        <td>5.000K</td>
-                    </tr>
-                    <tr>
-                        <td>Buy SC Khusus Push Kontak</td>
-                        <td>5.000K</td>
-                    </tr>
-                </tbody>
-            </table>
+        <section class="section">
+            <h2>LAYANAN LAINNYA</h2>
+            <ul class="price-list">
+                <li>
+                    <span class="price-item">OPEN RENAME SC</span>
+                    <span class="price-value">5.000K</span>
+                </li>
+                <li>
+                    <span class="price-item">BUY SC KHUSUS PUSH KONTAK</span>
+                    <span class="price-value">5.000K</span>
+                </li>
+            </ul>
         </section>
 
-        <section>
-            <h2>Hubungi Kami</h2>
-            <p>Untuk informasi lebih lanjut atau pemesanan, silakan hubungi kami melalui:</p>
-            <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="channel-link" target="_blank">Saluran WhatsApp</a>
-            <br>
-            <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="whatsapp-link" target="_blank">Order Langsung ke WhatsApp</a>
+        <section class="section">
+            <h2>HUBUNGI KAMI</h2>
+            <div class="channels">
+                <div class="channel">
+                    <h3>Saluran WhatsApp</h3>
+                    <p>Ikuti saluran resmi kami untuk informasi terbaru</p>
+                    <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" target="_blank">Buka Saluran</a>
+                </div>
+                <div class="channel">
+                    <h3>Pesan Langsung</h3>
+                    <p>Pesan langsung untuk konsultasi dan pemesanan</p>
+                    <a href="https://wa.me/message/VPYX6NSN7T7UH1" target="_blank">Hubungi WhatsApp</a>
+                </div>
+            </div>
         </section>
 
         <footer>
-            <p>&copy; 2023 Buri Tua - All Rights Reserved</p>
+            <p>&copy; 2023 Daftar Harga Bot Push Kontak. Semua harga dapat berubah sewaktu-waktu.</p>
         </footer>
     </div>
 </body>
