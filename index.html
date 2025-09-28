@@ -3,203 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Harga Layanan Bot</title>
+    <title>Daftar Harga Bot Push Kontak</title>
     <style>
-        /* Reset dan Gaya Dasar */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
             color: #333;
             line-height: 1.6;
             padding: 20px;
-            min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
-        /* Header */
+
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background-color: #1e88e5;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(30, 136, 229, 0.3);
+            color: white;
         }
-        
+
         .logo {
             max-width: 200px;
-            margin: 0 auto 20px;
-            display: block;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 10px;
         }
-        
+
         h1 {
-            color: #1e3c72;
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
         }
-        
-        .subtitle {
-            color: #2a5298;
-            font-size: 1.2rem;
-            font-weight: 500;
+
+        .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        /* Kartu Harga */
-        .pricing-section {
-            margin-bottom: 40px;
-        }
-        
-        .section-title {
-            color: white;
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        }
-        
-        .pricing-cards {
+
+        .price-sections {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 25px;
+            margin-bottom: 30px;
         }
-        
-        .pricing-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+
+        .section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
-        
-        .card-header {
-            background: #2a5298;
-            color: white;
-            padding: 20px;
+
+        .section-title {
+            color: #1565c0;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #bbdefb;
             text-align: center;
         }
-        
-        .card-title {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-        
-        .card-price {
-            font-size: 2rem;
-            font-weight: bold;
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        .feature-list {
-            list-style-type: none;
-        }
-        
-        .feature-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+
+        .price-item {
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed #e3f2fd;
         }
-        
-        .feature-list li:last-child {
+
+        .price-item:last-child {
             border-bottom: none;
         }
-        
-        .feature-name {
-            font-weight: 500;
+
+        .item-details {
+            flex: 1;
         }
-        
-        .feature-value {
+
+        .item-name {
+            font-weight: 600;
+            color: #0d47a1;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+
+        .item-price {
             font-weight: bold;
-            color: #2a5298;
+            color: #1565c0;
+            margin-left: 15px;
+            white-space: nowrap;
         }
-        
-        /* Tombol */
-        .cta-section {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        
-        .cta-title {
-            color: #1e3c72;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #2a5298;
+
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #1e88e5;
             color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
+            text-align: center;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin: 10px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
         }
-        
-        .btn:hover {
-            background: #1e3c72;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+
+        .order-btn:hover {
+            background-color: #1565c0;
         }
-        
-        .btn-whatsapp {
-            background: #25D366;
+
+        .channel-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px;
         }
-        
-        .btn-whatsapp:hover {
-            background: #128C7E;
+
+        .channel-link {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
-        
-        /* Footer */
+
+        .channel-link:hover {
+            background-color: #128C7E;
+        }
+
         footer {
             text-align: center;
-            color: white;
-            padding: 20px;
             margin-top: 40px;
+            padding: 20px;
+            color: #546e7a;
             font-size: 0.9rem;
-            opacity: 0.8;
         }
-        
-        /* Responsif */
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .pricing-cards {
+            .price-sections {
                 grid-template-columns: 1fr;
             }
             
-            .btn {
-                display: block;
-                margin: 10px auto;
-                max-width: 300px;
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
             }
         }
     </style>
@@ -207,286 +183,179 @@
 <body>
     <div class="container">
         <header>
-            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo Layanan Bot" class="logo">
-            <h1>Daftar Harga Layanan Bot</h1>
-            <p class="subtitle">Panel & Push Kontak - Harga Terjangkau & Berkualitas</p>
+            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo" class="logo">
+            <h1>Daftar Harga Bot Push Kontak</h1>
+            <p class="description">Layanan bot push kontak berkualitas dengan harga terjangkau. Pemasangan gratis untuk semua paket!</p>
         </header>
-        
-        <section class="pricing-section">
-            <h2 class="section-title">Harga Bot Push Kontak</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">1 Hari</h3>
-                        <div class="card-price">Rp 2.000</div>
+
+        <div class="price-sections">
+            <div class="section">
+                <h2 class="section-title">Harga Bot Push Kontak</h2>
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">1 Hari</div>
+                        <div class="item-description">FREE Pemasangan</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">Durasi</span>
-                                <span class="feature-value">1 Hari</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">Pemasangan</span>
-                                <span class="feature-value">GRATIS</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 2.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">2 Hari</h3>
-                        <div class="card-price">Rp 3.000</div>
+                <a href="https://wa.me/6287780575005?text=order+bot+1+hari+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">2 Hari</div>
+                        <div class="item-description">FREE Pemasangan</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">Durasi</span>
-                                <span class="feature-value">2 Hari</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">Pemasangan</span>
-                                <span class="feature-value">GRATIS</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 3.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">3 Hari</h3>
-                        <div class="card-price">Rp 4.000</div>
+                <a href="https://wa.me/6287780575005?text=order+bot+2+hari+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">3 Hari</div>
+                        <div class="item-description">FREE Pemasangan</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">Durasi</span>
-                                <span class="feature-value">3 Hari</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">Pemasangan</span>
-                                <span class="feature-value">GRATIS</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 4.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">5 Hari</h3>
-                        <div class="card-price">Rp 5.000</div>
+                <a href="https://wa.me/6287780575005?text=order+bot+3+hari+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">5 Hari</div>
+                        <div class="item-description">FREE Pemasangan</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">Durasi</span>
-                                <span class="feature-value">5 Hari</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">Pemasangan</span>
-                                <span class="feature-value">GRATIS</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 5.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">1 Minggu</h3>
-                        <div class="card-price">Rp 10.000</div>
+                <a href="https://wa.me/6287780575005?text=order+bot+5+hari+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">1 Minggu</div>
+                        <div class="item-description">FREE Pemasangan</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">Durasi</span>
-                                <span class="feature-value">1 Minggu</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">Pemasangan</span>
-                                <span class="feature-value">GRATIS</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 10.000</div>
                 </div>
+                <a href="https://wa.me/6287780575005?text=order+bot+1+minggu+bang" class="order-btn">Order via WhatsApp</a>
             </div>
-        </section>
-        
-        <section class="pricing-section">
-            <h2 class="section-title">Harga Buy Panel Run Bot</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Basic</h3>
-                        <div class="card-price">Rp 2.000</div>
+
+            <div class="section">
+                <h2 class="section-title">Panel Run Bot</h2>
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 1GB CPU 30%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">1GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">30%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 3.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Standard</h3>
-                        <div class="card-price">Rp 3.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 2GB CPU 50%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">2GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">50%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 5.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Advanced</h3>
-                        <div class="card-price">Rp 4.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 3GB CPU 70%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">3GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">70%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 7.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Pro</h3>
-                        <div class="card-price">Rp 5.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 4GB CPU 90%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">4GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">90%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 8.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Ultimate</h3>
-                        <div class="card-price">Rp 6.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 5GB CPU 100%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">5GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">100%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 9.000</div>
                 </div>
-                
-                <!-- Panel lainnya -->
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Premium</h3>
-                        <div class="card-price">Rp 10.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 6GB CPU 120%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">6GB</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">120%</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 10.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Enterprise</h3>
-                        <div class="card-price">Rp 17.000</div>
+                <a href="https://wa.me/6287780575005?text=order+panel+6+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 7GB CPU 140%</div>
                     </div>
-                    <div class="card-body">
-                        <ul class="feature-list">
-                            <li>
-                                <span class="feature-name">RAM</span>
-                                <span class="feature-value">Unlimited</span>
-                            </li>
-                            <li>
-                                <span class="feature-name">CPU</span>
-                                <span class="feature-value">Unlimited</span>
-                            </li>
-                        </ul>
-                    </div>
+                    <div class="item-price">Rp 12.000</div>
                 </div>
+                <a href="https://wa.me/6287780575005?text=order+panel+7+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 8GB CPU 160%</div>
+                    </div>
+                    <div class="item-price">Rp 13.000</div>
+                </div>
+                <a href="https://wa.me/6287780575005?text=order+panel+8+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 9GB CPU 180%</div>
+                    </div>
+                    <div class="item-price">Rp 14.000</div>
+                </div>
+                <a href="https://wa.me/6287780575005?text=order+panel+9+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM 10GB CPU 200%</div>
+                    </div>
+                    <div class="item-price">Rp 15.000</div>
+                </div>
+                <a href="https://wa.me/6287780575005?text=order+panel+10+gb+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">RAM UNLI GB CPU UNLI</div>
+                    </div>
+                    <div class="item-price">Rp 17.000</div>
+                </div>
+                <a href="https://wa.me/6287780575005?text=order+panel+unli+bang" class="order-btn">Order via WhatsApp</a>
             </div>
-        </section>
-        
-        <section class="pricing-section">
-            <h2 class="section-title">Layanan Lainnya</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Open Rename SC</h3>
-                        <div class="card-price">Rp 5.000</div>
+
+            <div class="section">
+                <h2 class="section-title">Layanan Lainnya</h2>
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">Open Rename SC</div>
                     </div>
-                    <div class="card-body">
-                        <p>Layanan open rename script sesuai kebutuhan Anda.</p>
-                    </div>
+                    <div class="item-price">Rp 5.000</div>
                 </div>
-                
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Buy SC Khusus Push Kontak</h3>
-                        <div class="card-price">Rp 5.000</div>
+                <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="order-btn">Order via WhatsApp</a>
+
+                <div class="price-item">
+                    <div class="item-details">
+                        <div class="item-name">Buy SC Khusus Push Kontak</div>
                     </div>
-                    <div class="card-body">
-                        <p>Script khusus untuk layanan push kontak.</p>
-                    </div>
+                    <div class="item-price">Rp 5.000</div>
                 </div>
+                <a href="https://wa.me/6287780575005?text=order+sc+bot+push+kontak+bang" class="order-btn">Order via WhatsApp</a>
             </div>
-        </section>
-        
-        <section class="cta-section">
-            <h2 class="cta-title">Tertarik dengan Layanan Kami?</h2>
-            <p>Hubungi kami melalui WhatsApp untuk informasi lebih lanjut dan pemesanan.</p>
-            <div>
-                <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="btn" target="_blank">Saluran WhatsApp</a>
-                <a href="https://wa.me/message/VPYX6NSN7T7UH1" class="btn btn-whatsapp" target="_blank">Order via WhatsApp</a>
-            </div>
-        </section>
-        
+        </div>
+
+        <div class="channel-section">
+            <h2 class="section-title">Saluran WhatsApp</h2>
+            <p>Ikuti saluran WhatsApp kami untuk mendapatkan informasi terbaru tentang layanan dan penawaran spesial!</p>
+            <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="channel-link">Ikuti Saluran WhatsApp</a>
+        </div>
+
         <footer>
-            <p>&copy; 2023 Layanan Bot - Panel & Push Kontak.</p>
+            <p>&copy; 2023 Bot Push Kontak. Semua harga tetap berhati-hati terhadap clone.</p>
         </footer>
     </div>
 </body>
