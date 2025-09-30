@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farid Shop Official</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -14,20 +13,18 @@
         }
         
         body {
-            background-color: #0a0a1a;
-            color: #fff;
+            color: white;
             overflow-x: hidden;
         }
         
-        #video-bg {
+        #background-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: -2;
-            opacity: 0.7;
+            z-index: -1;
         }
         
         .overlay {
@@ -36,7 +33,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(10, 10, 26, 0.8), rgba(20, 10, 40, 0.9));
+            background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
         
@@ -48,331 +45,192 @@
         
         header {
             text-align: center;
-            padding: 40px 0;
-            position: relative;
-        }
-        
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid #6a11cb;
-            box-shadow: 0 0 20px rgba(106, 17, 203, 0.7);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .anime-text {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, #6a11cb, #2575fc, #ff0099);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-            margin-bottom: 10px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: #aaa;
+            padding: 30px 0;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
             margin-bottom: 30px;
         }
         
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            margin: 40px 0 20px;
-            color: #6a11cb;
-            text-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
-            position: relative;
+        .logo {
+            width: 150px;
+            height: auto;
+            margin-bottom: 15px;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            margin: 10px auto;
-            border-radius: 2px;
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+        .welcome-text {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #f8f8f8;
         }
         
-        .service-card {
-            background: rgba(30, 30, 60, 0.7);
-            border-radius: 15px;
+        .section {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
             padding: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(106, 17, 203, 0.3);
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-        }
-        
-        .service-header {
+        .section-title {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
         }
         
-        .service-logo {
+        .section-logo {
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
             margin-right: 15px;
-            border: 2px solid #6a11cb;
+            border-radius: 5px;
         }
         
-        .service-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .section h2 {
+            font-size: 1.8rem;
+            color: #4CAF50;
         }
         
-        .service-name {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #6a11cb;
+        .price-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         
-        .service-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .price-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s ease;
         }
         
-        .service-item:last-child {
-            border-bottom: none;
+        .price-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
         
-        .item-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: #fff;
-        }
-        
-        .item-price {
+        .price-item h3 {
             font-size: 1.3rem;
-            font-weight: 700;
-            color: #6a11cb;
             margin-bottom: 10px;
+            color: #4CAF50;
         }
         
-        .btn {
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .description {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+        
+        .whatsapp-btn {
             display: inline-block;
-            background: linear-gradient(to right, #6a11cb, #2575fc);
+            background: #25D366;
             color: white;
-            padding: 12px 25px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 5px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-            text-align: center;
-            margin-top: 10px;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.6);
+        .whatsapp-btn:hover {
+            background: #128C7E;
         }
         
         .payment-methods {
             display: flex;
-            justify-content: center;
             flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 30px;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
         }
         
         .payment-method {
             text-align: center;
-            background: rgba(30, 30, 60, 0.7);
-            padding: 20px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
             width: 200px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(106, 17, 203, 0.3);
         }
         
         .payment-logo {
             width: 80px;
             height: 80px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 0 auto 15px;
-            border: 2px solid #6a11cb;
-        }
-        
-        .payment-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .payment-name {
-            font-size: 1.2rem;
-            font-weight: 600;
             margin-bottom: 10px;
-            color: #6a11cb;
-        }
-        
-        .payment-detail {
-            font-size: 0.9rem;
-            color: #aaa;
+            border-radius: 5px;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 40px;
+            margin-top: 20px;
         }
         
         .social-link {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            background: rgba(30, 30, 60, 0.7);
-            padding: 15px 25px;
-            border-radius: 30px;
             text-decoration: none;
             color: white;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(106, 17, 203, 0.3);
+            transition: transform 0.3s ease;
         }
         
         .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-            background: rgba(106, 17, 203, 0.2);
+            transform: scale(1.1);
         }
         
         .social-logo {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 10px;
-            border: 2px solid #6a11cb;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            border-radius: 5px;
         }
         
-        .social-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-top: 30px;
         }
         
         .thank-you {
-            text-align: center;
-            margin: 50px 0;
-            padding: 30px;
-            background: rgba(30, 30, 60, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(106, 17, 203, 0.3);
-        }
-        
-        .thank-you h2 {
-            font-size: 2rem;
+            font-size: 1.2rem;
             margin-bottom: 15px;
-            color: #6a11cb;
+            color: #FFD700;
         }
         
-        .thank-you p {
-            font-size: 1.1rem;
-            color: #aaa;
-        }
-        
-        .music-control {
+        .audio-control {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: rgba(30, 30, 60, 0.8);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 2px solid #6a11cb;
             z-index: 100;
         }
         
-        .music-control i {
-            font-size: 1.5rem;
-            color: #6a11cb;
-        }
-        
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px rgba(106, 17, 203, 0.5);
-            }
-            to {
-                text-shadow: 0 0 20px rgba(106, 17, 203, 0.8), 0 0 30px rgba(37, 117, 252, 0.6);
-            }
+        .audio-control i {
+            font-size: 24px;
+            color: white;
         }
         
         @media (max-width: 768px) {
-            .anime-text {
-                font-size: 2.5rem;
-            }
-            
-            .services {
+            .price-list {
                 grid-template-columns: 1fr;
             }
             
@@ -383,260 +241,224 @@
             
             .social-links {
                 flex-direction: column;
-                align-items: center;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .welcome-text {
+                font-size: 1.2rem;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Background Video -->
-    <video id="video-bg" autoplay muted loop>
-        <source src="https://files.catbox.moe/e6pf99.mp4" type="video/mp4">
+    <video autoplay muted loop id="background-video">
+        <source src="https://files.catbox.moe/yg4oph.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
     
-    <!-- Music Control -->
-    <div class="music-control" id="musicControl">
-        <i class="fas fa-music"></i>
+    <div class="audio-control" id="audioControl">
+        <i class="fas fa-volume-up"></i>
     </div>
-    <audio id="bgMusic" loop>
-        <source src="https://files.catbox.moe/e6pf99.mp4" type="audio/mp4">
+    
+    <audio id="backgroundMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
     </audio>
     
     <div class="container">
         <header>
-            <div class="logo-container">
-                <div class="logo">
-                    <img src="https://files.catbox.moe/810tg8.jpg" alt="Farid Shop Official Logo">
-                </div>
-            </div>
-            <h1 class="anime-text">FARID SHOP OFFICIAL</h1>
-            <p class="subtitle">Platform Layanan Digital Terbaik</p>
+            <img src="https://files.catbox.moe/810tg8.jpg" alt="Farid Shop Official Logo" class="logo">
+            <h1>Farid Shop Official</h1>
+            <div class="welcome-text">Selamat Datang di Web Farid Shop Official</div>
         </header>
         
-        <section id="services">
-            <h2 class="section-title">LAYANAN KAMI</h2>
-            
-            <div class="services">
-                <!-- Bot Push Kontak -->
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-logo">
-                            <img src="https://files.catbox.moe/6nox40.jpg" alt="Bot Push Kontak Logo">
-                        </div>
-                        <h3 class="service-name">BOT PUSH KONTAK</h3>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">1 HARI</div>
-                        <div class="item-price">Rp 2.000</div>
-                        <p>FREE Pemasangan</p>
-                        <a href="https://wa.me/6287780575005?text=order+bot+1+hari+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">2 HARI</div>
-                        <div class="item-price">Rp 3.000</div>
-                        <p>FREE Pemasangan</p>
-                        <a href="https://wa.me/6287780575005?text=order+bot+2+hari+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">3 HARI</div>
-                        <div class="item-price">Rp 4.000</div>
-                        <p>FREE Pemasangan</p>
-                        <a href="https://wa.me/6287780575005?text=order+bot+3+hari+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">5 HARI</div>
-                        <div class="item-price">Rp 5.000</div>
-                        <p>FREE Pemasangan</p>
-                        <a href="https://wa.me/6287780575005?text=order+bot+5+hari+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">1 MINGGU</div>
-                        <div class="item-price">Rp 10.000</div>
-                        <p>FREE Pemasangan</p>
-                        <a href="https://wa.me/6287780575005?text=order+bot+1+minggu+bang" class="btn">Order Sekarang</a>
-                    </div>
+        <section class="section">
+            <div class="section-title">
+                <img src="https://files.catbox.moe/6nox40.jpg" alt="Bot Push Kontak Logo" class="section-logo">
+                <h2>List Harga Bot Push Kontak</h2>
+            </div>
+            <div class="price-list">
+                <div class="price-item">
+                    <h3>1 Hari</h3>
+                    <div class="price">Rp 2.000</div>
+                    <div class="description">FREE Pemasangan</div>
+                    <a href="https://wa.me/6287780575005?text=order+bot+1+hari+bang" class="whatsapp-btn">Order via WhatsApp</a>
                 </div>
-                
-                <!-- Panel Run Bot -->
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-logo">
-                            <img src="https://files.catbox.moe/q2abt3.png" alt="Panel Run Bot Logo">
-                        </div>
-                        <h3 class="service-name">PANEL RUN BOT</h3>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 1GB CPU 30%</div>
-                        <div class="item-price">Rp 3.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 2GB CPU 50%</div>
-                        <div class="item-price">Rp 5.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 3GB CPU 70%</div>
-                        <div class="item-price">Rp 7.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 4GB CPU 90%</div>
-                        <div class="item-price">Rp 8.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 5GB CPU 100%</div>
-                        <div class="item-price">Rp 9.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 6GB CPU 120%</div>
-                        <div class="item-price">Rp 10.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+6+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 7GB CPU 140%</div>
-                        <div class="item-price">Rp 12.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+7+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 8GB CPU 160%</div>
-                        <div class="item-price">Rp 13.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+8+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 9GB CPU 180%</div>
-                        <div class="item-price">Rp 14.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+9+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM 10GB CPU 200%</div>
-                        <div class="item-price">Rp 15.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+10+gb+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">RAM UNLI GB CPU UNLI</div>
-                        <div class="item-price">Rp 17.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+panel+unli+bang" class="btn">Order Sekarang</a>
-                    </div>
+                <div class="price-item">
+                    <h3>2 Hari</h3>
+                    <div class="price">Rp 3.000</div>
+                    <div class="description">FREE Pemasangan</div>
+                    <a href="https://wa.me/6287780575005?text=order+bot+2+hari+bang" class="whatsapp-btn">Order via WhatsApp</a>
                 </div>
-                
-                <!-- Rename SC & Buy SC -->
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-logo">
-                            <img src="https://files.catbox.moe/bmr8ew.jpg" alt="Rename SC Logo">
-                        </div>
-                        <h3 class="service-name">RENAME SC & BUY SC</h3>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">OPEN RENAME SC</div>
-                        <div class="item-price">Rp 5.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="btn">Order Sekarang</a>
-                    </div>
-                    
-                    <div class="service-item">
-                        <div class="item-title">BUY SC PUSH KONTAK</div>
-                        <div class="item-price">Rp 5.000</div>
-                        <a href="https://wa.me/6287780575005?text=order+sc+bot+push+kontak+bang" class="btn">Order Sekarang</a>
-                    </div>
+                <div class="price-item">
+                    <h3>3 Hari</h3>
+                    <div class="price">Rp 4.000</div>
+                    <div class="description">FREE Pemasangan</div>
+                    <a href="https://wa.me/6287780575005?text=order+bot+3+hari+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>5 Hari</h3>
+                    <div class="price">Rp 5.000</div>
+                    <div class="description">FREE Pemasangan</div>
+                    <a href="https://wa.me/6287780575005?text=order+bot+5+hari+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>1 Minggu</h3>
+                    <div class="price">Rp 10.000</div>
+                    <div class="description">FREE Pemasangan</div>
+                    <a href="https://wa.me/6287780575005?text=order+bot+1+minggu+bang" class="whatsapp-btn">Order via WhatsApp</a>
                 </div>
             </div>
         </section>
         
-        <section id="payment">
-            <h2 class="section-title">METODE PEMBAYARAN</h2>
-            
+        <section class="section">
+            <div class="section-title">
+                <img src="https://files.catbox.moe/q2abt3.png" alt="Panel Bot Logo" class="section-logo">
+                <h2>List Harga Buy Panel Run Bot</h2>
+            </div>
+            <div class="price-list">
+                <div class="price-item">
+                    <h3>RAM 1GB CPU 30%</h3>
+                    <div class="price">Rp 3.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 2GB CPU 50%</h3>
+                    <div class="price">Rp 5.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 3GB CPU 70%</h3>
+                    <div class="price">Rp 7.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 4GB CPU 90%</h3>
+                    <div class="price">Rp 8.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 5GB CPU 100%</h3>
+                    <div class="price">Rp 9.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 6GB CPU 120%</h3>
+                    <div class="price">Rp 10.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+6+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 7GB CPU 140%</h3>
+                    <div class="price">Rp 12.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+7+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 8GB CPU 160%</h3>
+                    <div class="price">Rp 13.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+8+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 9GB CPU 180%</h3>
+                    <div class="price">Rp 14.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+9+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM 10GB CPU 200%</h3>
+                    <div class="price">Rp 15.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+10+gb+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>RAM UNLI GB CPU UNLI</h3>
+                    <div class="price">Rp 17.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+panel+unli+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <div class="section-title">
+                <img src="https://files.catbox.moe/bmr8ew.jpg" alt="Rename SC Logo" class="section-logo">
+                <h2>List Harga Rename SC & Buy SC Push Kontak</h2>
+            </div>
+            <div class="price-list">
+                <div class="price-item">
+                    <h3>Open Rename SC</h3>
+                    <div class="price">Rp 5.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+                <div class="price-item">
+                    <h3>Buy SC Khusus Push Kontak</h3>
+                    <div class="price">Rp 5.000</div>
+                    <a href="https://wa.me/6287780575005?text=order+sc+bot+push+kontak+bang" class="whatsapp-btn">Order via WhatsApp</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 style="text-align: center; margin-bottom: 20px;">Metode Pembayaran</h2>
             <div class="payment-methods">
                 <div class="payment-method">
-                    <div class="payment-logo">
-                        <img src="https://files.catbox.moe/v3wdtm.jpg" alt="DANA Logo">
-                    </div>
-                    <h3 class="payment-name">DANA</h3>
-                    <p class="payment-detail">081563618397</p>
-                    <p class="payment-detail">A/N: TRIWULAN SARI</p>
+                    <img src="https://files.catbox.moe/v3wdtm.jpg" alt="DANA Logo" class="payment-logo">
+                    <h3>DANA</h3>
+                    <p>081563618397</p>
+                    <p>A/N: TRIWULAN SARI</p>
                 </div>
-                
                 <div class="payment-method">
-                    <div class="payment-logo">
-                        <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS Logo">
-                    </div>
-                    <h3 class="payment-name">QRIS</h3>
-                    <p class="payment-detail">Scan untuk pembayaran</p>
+                    <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS Logo" class="payment-logo">
+                    <h3>QRIS</h3>
                 </div>
             </div>
         </section>
         
-        <section id="social">
-            <h2 class="section-title">HUBUNGI KAMI</h2>
-            
+        <section class="section">
+            <h2 style="text-align: center; margin-bottom: 20px;">Hubungi Kami</h2>
             <div class="social-links">
                 <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="social-link" target="_blank">
-                    <div class="social-logo">
-                        <img src="https://files.catbox.moe/v9msdk.jpg" alt="WhatsApp Logo">
-                    </div>
+                    <img src="https://files.catbox.moe/v9msdk.jpg" alt="WhatsApp Logo" class="social-logo">
                     <span>WhatsApp Channel</span>
                 </a>
-                
                 <a href="https://www.instagram.com/faridshopofficial?igsh=M2ZpeW16bnBlM2l0" class="social-link" target="_blank">
-                    <div class="social-logo">
-                        <img src="https://files.catbox.moe/wiu0c5.jpg" alt="Instagram Logo">
-                    </div>
+                    <img src="https://files.catbox.moe/wiu0c5.jpg" alt="Instagram Logo" class="social-logo">
                     <span>Instagram</span>
                 </a>
             </div>
         </section>
         
-        <section class="thank-you">
-            <h2>TERIMA KASIH</h2>
-            <p>Terima kasih sudah mau order di Farid Shop Official, next order selanjutnya!</p>
-        </section>
+        <footer>
+            <div class="thank-you">Terima Kasih Sudah Mau Order di Farid Shop Official, Next Order Selanjutnya</div>
+            <p>&copy; 2023 Farid Shop Official. All Rights Reserved.</p>
+        </footer>
     </div>
     
     <script>
-        // Music Control
-        const musicControl = document.getElementById('musicControl');
-        const bgMusic = document.getElementById('bgMusic');
-        let isPlaying = false;
-        
-        musicControl.addEventListener('click', function() {
-            if (isPlaying) {
-                bgMusic.pause();
-                musicControl.innerHTML = '<i class="fas fa-music"></i>';
-            } else {
-                bgMusic.play();
-                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            isPlaying = !isPlaying;
+        // Musik otomatis saat membuka web
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundMusic');
+            const audioControl = document.getElementById('audioControl');
+            const audioIcon = audioControl.querySelector('i');
+            
+            // Coba putar musik otomatis
+            audio.play().catch(function(error) {
+                console.log('Autoplay prevented: ', error);
+                audioControl.style.display = 'block';
+            });
+            
+            // Kontrol musik
+            audioControl.addEventListener('click', function() {
+                if (audio.paused) {
+                    audio.play();
+                    audioIcon.className = 'fas fa-volume-up';
+                } else {
+                    audio.pause();
+                    audioIcon.className = 'fas fa-volume-mute';
+                }
+            });
         });
-        
-        // Auto play music after user interaction
-        document.addEventListener('click', function() {
-            if (!isPlaying) {
-                bgMusic.play();
-                musicControl.innerHTML = '<i class="fas fa-pause"></i>';
-                isPlaying = true;
-            }
-        }, { once: true });
     </script>
 </body>
 </html>
