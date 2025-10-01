@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farid Shop Official - Harga & Pembayaran</title>
+    <title>Farid Shop Official</title>
     <style>
         * {
             margin: 0;
@@ -11,617 +11,511 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            color: white;
+            background-color: #0f0f0f;
+            color: #fff;
             overflow-x: hidden;
         }
-
+        
         #background-video {
             position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: -1;
         }
-
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            position: relative;
-            z-index: 1;
         }
-
+        
         header {
             text-align: center;
             padding: 30px 0;
+            position: relative;
         }
-
-        .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
+        
+        .animated-logo {
+            width: 200px;
+            height: 200px;
             margin: 0 auto 20px;
+            border-radius: 50%;
             overflow: hidden;
-            border: 3px solid #fff;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
         }
-
-        .logo img {
+        
+        .animated-logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
-        .welcome-text {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-            height: 60px;
-            overflow: hidden;
-        }
-
-        .typing-animation {
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
-            border-right: 3px solid #00ffff;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #00ffff; }
-        }
-
-        .section-title {
-            text-align: center;
-            margin: 40px 0 20px;
-            font-size: 2rem;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(to right, transparent, #00ffff, transparent);
-            margin: 10px auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .service-item {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-        }
-
-        .service-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.5);
-        }
-
-        .service-item img {
-            width: 50px;
-            height: 50px;
+        
+        .animated-text {
+            font-size: 3rem;
+            font-weight: bold;
             margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            animation: glow 2s ease-in-out infinite alternate;
         }
-
-        .service-item h3 {
-            margin-bottom: 10px;
-            color: #00ffff;
-        }
-
-        .price-list {
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
-        }
-
-        .price-category {
+        
+        .subtitle {
+            font-size: 1.5rem;
             margin-bottom: 30px;
+            color: #cccccc;
         }
-
-        .category-header {
+        
+        .section {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        .section-title {
             display: flex;
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 10px;
-            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            border-bottom: 2px solid #00ffff;
         }
-
-        .category-header img {
-            width: 40px;
-            height: 40px;
+        
+        .section-logo {
+            width: 50px;
+            height: 50px;
             margin-right: 15px;
+            border-radius: 10px;
+            overflow: hidden;
         }
-
-        .category-header h3 {
+        
+        .section-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .section-title h2 {
+            font-size: 1.8rem;
             color: #00ffff;
-            font-size: 1.5rem;
         }
-
-        .price-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
+        
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .product-item {
+            background: rgba(50, 50, 50, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
             margin-bottom: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .price-item:hover {
-            background: rgba(0, 255, 255, 0.1);
-        }
-
-        .price-details {
-            flex: 1;
-        }
-
-        .price-details h4 {
-            margin-bottom: 5px;
             color: #00ffff;
         }
-
-        .price-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .price {
-            font-weight: bold;
+        
+        .product-price {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
             color: #00ff00;
         }
-
-        .order-btn {
-            background: linear-gradient(to right, #00a8ff, #00ffaa);
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #00ffff, #0080ff);
             color: #000;
-            border: none;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-align: center;
+            width: 100%;
         }
-
-        .order-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+        
+        .btn:hover {
+            background: linear-gradient(45deg, #0080ff, #00ffff);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
-
+        
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-top: 20px;
         }
-
-        .payment-method {
-            background: rgba(0, 0, 0, 0.7);
+        
+        .payment-item {
+            background: rgba(50, 50, 50, 0.7);
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             width: 200px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
         }
-
-        .payment-method img {
+        
+        .payment-logo {
             width: 80px;
             height: 80px;
-            margin-bottom: 10px;
+            margin: 0 auto 10px;
+            border-radius: 10px;
+            overflow: hidden;
         }
-
+        
+        .payment-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .payment-details {
+            margin-top: 10px;
+        }
+        
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-top: 30px;
         }
-
+        
+        .social-item {
+            text-align: center;
+            width: 150px;
+        }
+        
+        .social-logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .social-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: block;
+            color: #00ffff;
             text-decoration: none;
-            color: white;
-            transition: transform 0.3s;
+            margin-top: 5px;
+            word-break: break-all;
         }
-
-        .social-link:hover {
-            transform: scale(1.1);
-        }
-
-        .social-link img {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-
+        
         .thank-you {
             text-align: center;
+            margin-top: 40px;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 255, 255, 0.1);
             border-radius: 10px;
-            margin-bottom: 40px;
-            border: 1px solid rgba(0, 255, 255, 0.3);
+            font-size: 1.2rem;
         }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
-
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff;
+            }
+            to {
+                text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff, 0 0 45px #00ffff;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .welcome-text {
-                font-size: 1.8rem;
+            .animated-text {
+                font-size: 2rem;
             }
             
-            .price-item {
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .product-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
                 flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .price-actions {
-                width: 100%;
-                justify-content: space-between;
-                margin-top: 10px;
+                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background Video -->
-    <video autoplay muted loop id="background-video">
+    <video id="background-video" autoplay loop muted>
         <source src="https://files.catbox.moe/yg4oph.mp4" type="video/mp4">
     </video>
-
-    <!-- Background Music -->
-    <audio autoplay loop id="background-music">
-        <source src="https://files.catbox.moe/yg4oph.mp4" type="audio/mp4">
-    </audio>
-
+    <div class="overlay"></div>
+    
     <div class="container">
         <header>
-            <div class="logo">
+            <div class="animated-logo">
                 <img src="https://files.catbox.moe/810tg8.jpg" alt="Farid Shop Official Logo">
             </div>
-            <h1 class="welcome-text">
-                <span class="typing-animation">SELAMAT DATANG DI PRODUK DIGITAL FARID SHOP OFFICIAL</span>
-            </h1>
+            <h1 class="animated-text">FARID SHOP OFFICIAL</h1>
+            <p class="subtitle">Platform Layanan Digital Terbaik</p>
         </header>
-
-        <section>
-            <h2 class="section-title">LAYANAN KAMI</h2>
-            <div class="services-grid">
-                <div class="service-item">
-                    <h3>Panel</h3>
+        
+        <section class="section">
+            <div class="section-title">
+                <div class="section-logo">
+                    <img src="https://files.catbox.moe/6nox40.jpg" alt="Bot Push Kontak Logo">
                 </div>
-                <div class="service-item">
-                    <h3>VPS</h3>
+                <h2>LAYANAN KAMI - LIST HARGA BOT PUSH KONTAK</h2>
+            </div>
+            
+            <div class="product-list">
+                <div class="product-item">
+                    <h3 class="product-title">1 HARI</h3>
+                    <p class="product-price">Rp 2.000 / FREE Pemasangan</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+1+hari+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
-                <div class="service-item">
-                    <h3>Script</h3>
+                
+                <div class="product-item">
+                    <h3 class="product-title">2 HARI</h3>
+                    <p class="product-price">Rp 3.000 / FREE PEMASANGAN</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+2+hari+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
-                <div class="service-item">
-                    <h3>Jasa</h3>
+                
+                <div class="product-item">
+                    <h3 class="product-title">3 HARI</h3>
+                    <p class="product-price">Rp 4.000 / FREE PEMASANGAN</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+3+hari+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
-                <div class="service-item">
-                    <h3>Murid</h3>
+                
+                <div class="product-item">
+                    <h3 class="product-title">5 HARI</h3>
+                    <p class="product-price">Rp 5.000 / FREE PEMASANGAN</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+5+hari+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
-                <div class="service-item">
-                    <h3>Sewa Bot</h3>
-                </div>
-                <div class="service-item">
-                    <h3>Stock Akun</h3>
-                </div>
-                <div class="service-item">
-                    <h3>Logo</h3>
+                
+                <div class="product-item">
+                    <h3 class="product-title">1 MINGGU</h3>
+                    <p class="product-price">Rp 10.000 / FREE PEMASANGAN</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+1+minggu+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2 class="section-title">LIST HARGA BOT PUSH KONTAK</h2>
-            <div class="price-list">
-                <div class="price-category">
-                    <div class="category-header">
-                        <img src="https://files.catbox.moe/6nox40.jpg" alt="Bot Push Kontak Logo">
-                        <h3>BOT PUSH KONTAK</h3>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>1 HARI</h4>
-                            <p>FREE Pemasangan</p>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 2.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+bot+1+hari+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>2 HARI</h4>
-                            <p>FREE PEMASANGAN</p>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 3.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+bot+2+hari+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>3 HARI</h4>
-                            <p>FREE PEMASANGAN</p>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 4.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+bot+3+hari+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>5 HARI</h4>
-                            <p>FREE PEMASANGAN</p>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 5.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+bot+5+hari+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>1 MINGGU</h4>
-                            <p>FREE PEMASANGAN</p>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 10.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+bot+1+minggu+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
+        
+        <section class="section">
+            <div class="section-title">
+                <div class="section-logo">
+                    <img src="https://files.catbox.moe/q2abt3.png" alt="Panel Run Bot Logo">
+                </div>
+                <h2>LIST HARGA BUY PANEL RUN BOT</h2>
+            </div>
+            
+            <div class="product-list">
+                <div class="product-item">
+                    <h3 class="product-title">RAM 1GB CPU 30%</h3>
+                    <p class="product-price">Rp 3.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 2GB CPU 50%</h3>
+                    <p class="product-price">Rp 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 3GB CPU 70%</h3>
+                    <p class="product-price">Rp 7.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 4GB CPU 90%</h3>
+                    <p class="product-price">Rp 8.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 5GB CPU 100%</h3>
+                    <p class="product-price">Rp 9.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 6GB CPU 120%</h3>
+                    <p class="product-price">Rp 10.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+6+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 7GB CPU 140%</h3>
+                    <p class="product-price">Rp 12.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+7+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 8GB CPU 160%</h3>
+                    <p class="product-price">Rp 13.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+8+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 9GB CPU 180%</h3>
+                    <p class="product-price">Rp 14.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+9+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM 10GB CPU 200%</h3>
+                    <p class="product-price">Rp 15.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+10+gb+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">RAM UNLI GB CPU UNLI</h3>
+                    <p class="product-price">Rp 17.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+unli+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2 class="section-title">LIST HARGA BUY PANEL RUN BOT</h2>
-            <div class="price-list">
-                <div class="price-category">
-                    <div class="category-header">
-                        <img src="https://files.catbox.moe/q2abt3.png" alt="Panel Run Bot Logo">
-                        <h3>PANEL RUN BOT</h3>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 1GB CPU 30%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 3.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 2GB CPU 50%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 5.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 3GB CPU 70%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 7.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 4GB CPU 90%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 8.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 5GB CPU 100%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 9.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 6GB CPU 120%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 10.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+6+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 7GB CPU 140%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 12.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+7+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 8GB CPU 160%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 13.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+8+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 9GB CPU 180%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 14.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+9+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM 10GB CPU 200%</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 15.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+10+gb+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>RAM UNLI GB CPU UNLI</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 17.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+panel+unli+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
+        
+        <section class="section">
+            <div class="section-title">
+                <div class="section-logo">
+                    <img src="https://files.catbox.moe/bmr8ew.jpg" alt="Rename SC Logo">
+                </div>
+                <h2>LIST HARGA RENAME SC & BUY SC PUSH KONTAK</h2>
+            </div>
+            
+            <div class="product-list">
+                <div class="product-item">
+                    <h3 class="product-title">OPEN RENAME SC</h3>
+                    <p class="product-price">Rp 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="btn">ORDER VIA WHATSAPP</a>
+                </div>
+                
+                <div class="product-item">
+                    <h3 class="product-title">BUY SC KHUSUS PUSH KONTAK</h3>
+                    <p class="product-price">Rp 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+sc+bot+push+kontak+bang" class="btn">ORDER VIA WHATSAPP</a>
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2 class="section-title">LIST HARGA RENAME SC & BUY SC PUSH KONTAK</h2>
-            <div class="price-list">
-                <div class="price-category">
-                    <div class="category-header">
-                        <img src="https://files.catbox.moe/bmr8ew.jpg" alt="Rename SC Logo">
-                        <h3>RENAME SC & BUY SC PUSH KONTAK</h3>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>OPEN RENAME SC</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 5.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                    
-                    <div class="price-item">
-                        <div class="price-details">
-                            <h4>BUY SC KHUSUS PUSH KONTAK</h4>
-                        </div>
-                        <div class="price-actions">
-                            <span class="price">Rp 5.000</span>
-                            <a href="https://wa.me/6287780575005?text=order+sc+bot+push+kontak+bang" class="order-btn" target="_blank">Order</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2 class="section-title">METODE PEMBAYARAN</h2>
+        
+        <section class="section">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #00ffff;">PAYMET UNTUK PEMBAYARAN KAMI</h2>
+            
             <div class="payment-methods">
-                <div class="payment-method">
-                    <img src="https://files.catbox.moe/v3wdtm.jpg" alt="DANA Logo">
+                <div class="payment-item">
+                    <div class="payment-logo">
+                        <img src="https://files.catbox.moe/v3wdtm.jpg" alt="DANA Logo">
+                    </div>
                     <h3>DANA</h3>
-                    <p>081563618397</p>
-                    <p>A/N: TRIWULAN SARI</p>
+                    <div class="payment-details">
+                        <p>081563618397</p>
+                        <p>A/N: TRIWULAN SARI</p>
+                    </div>
                 </div>
-                <div class="payment-method">
-                    <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS Logo">
+                
+                <div class="payment-item">
+                    <div class="payment-logo">
+                        <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS Logo">
+                    </div>
                     <h3>QRIS</h3>
+                    <p>Scan untuk pembayaran</p>
                 </div>
             </div>
         </section>
-
+        
         <div class="thank-you">
-            <h2>TERIMAKASIH SUDAH MAU ORDER DI FARID SHOP OFFICIAL, NEXT ORDER SELANJUTNYA</h2>
+            <p>TERIMAKASIH SUDAH MAU ORDER DI FARID SHOP OFFICIAL, NEXT ORDER SELANJUTNYA</p>
         </div>
-
-        <section>
-            <h2 class="section-title">SALURAN KAMI</h2>
+        
+        <section class="section">
+            <h2 style="text-align: center; margin-bottom: 20px; color: #00ffff;">HUBUNGI KAMI</h2>
+            
             <div class="social-links">
-                <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="social-link" target="_blank">
-                    <img src="https://files.catbox.moe/v9msdk.jpg" alt="WhatsApp Logo">
-                    <span>WhatsApp Channel</span>
-                </a>
-                <a href="https://www.instagram.com/faridshopofficial?igsh=M2ZpeW16bnBlM2l0" class="social-link" target="_blank">
-                    <img src="https://files.catbox.moe/wiu0c5.jpg" alt="Instagram Logo">
-                    <span>Instagram</span>
-                </a>
+                <div class="social-item">
+                    <div class="social-logo">
+                        <img src="https://files.catbox.moe/v9msdk.jpg" alt="WhatsApp Logo">
+                    </div>
+                    <h3>SALURAN WHATSAPP</h3>
+                    <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="social-link" target="_blank">whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W</a>
+                </div>
+                
+                <div class="social-item">
+                    <div class="social-logo">
+                        <img src="https://files.catbox.moe/wiu0c5.jpg" alt="Instagram Logo">
+                    </div>
+                    <h3>INSTAGRAM</h3>
+                    <a href="https://www.instagram.com/faridshopofficial?igsh=M2ZpeW16bnBlM2l0" class="social-link" target="_blank">@faridshopofficial</a>
+                </div>
             </div>
         </section>
-
-        <footer>
-            <p>&copy; 2023 Farid Shop Official - Platform Layanan Digital Terbaik</p>
-        </footer>
     </div>
-
+    
+    <audio id="background-music" loop>
+        <source src="https://files.catbox.moe/yg4oph.mp4" type="audio/mp4">
+    </audio>
+    
     <script>
-        // Menambahkan efek ketikan pada teks selamat datang
+        // Script untuk memutar musik dari video background
         document.addEventListener('DOMContentLoaded', function() {
-            const typingElement = document.querySelector('.typing-animation');
-            const text = typingElement.textContent;
-            typingElement.textContent = '';
-            typingElement.style.width = '0';
+            const video = document.getElementById('background-video');
+            const audio = document.getElementById('background-music');
             
-            setTimeout(() => {
-                typingElement.style.animation = 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite';
-                typingElement.textContent = text;
-            }, 500);
+            // Coba ekstrak audio dari video
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioContext.createMediaElementSource(video);
+                source.connect(audioContext.destination);
+            } catch (e) {
+                console.log("Audio context tidak didukung, menggunakan video sebagai sumber audio");
+            }
             
-            // Mengatur volume musik latar
-            const backgroundMusic = document.getElementById('background-music');
-            backgroundMusic.volume = 0.3; // Mengatur volume menjadi 30%
+            // Otomatis putar video (dan audio) setelah interaksi pengguna
+            document.body.addEventListener('click', function() {
+                video.play().catch(e => console.log("Autoplay video diblokir:", e));
+                audio.play().catch(e => console.log("Autoplay audio diblokir:", e));
+            }, { once: true });
         });
     </script>
 </body>
