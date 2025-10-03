@@ -13,613 +13,591 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            overflow-x: hidden;
+            color: #fff;
         }
 
-        /* Welcome Screen */
-        .welcome-screen {
+        /* Landing Page */
+        #landingPage {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background: linear-gradient(180deg, #0a1128 0%, #1a1a2e 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease-out;
+            z-index: 1000;
+            transition: opacity 0.5s;
         }
 
-        .welcome-screen.hide {
+        #landingPage.hidden {
             opacity: 0;
             pointer-events: none;
         }
 
-        .welcome-logo {
-            width: 180px;
-            height: 180px;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            border: 4px solid #00fff2;
-            box-shadow: 0 0 40px rgba(0, 255, 242, 0.6);
-            animation: float 3s ease-in-out infinite;
+        .logo-container {
+            margin-bottom: 30px;
+            animation: fadeInScale 1s ease-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
+        .logo-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .welcome-text {
-            font-size: 2.2em;
-            color: white;
-            text-align: center;
-            margin-bottom: 15px;
-            animation: glow 2s ease-in-out infinite;
-            font-weight: 300;
-        }
-
-        @keyframes glow {
-            0%, 100% { 
-                text-shadow: 0 0 10px #00fff2, 0 0 20px #00fff2, 0 0 30px #00fff2;
-                transform: scale(1);
-            }
-            50% { 
-                text-shadow: 0 0 20px #00fff2, 0 0 40px #00fff2, 0 0 60px #00fff2, 0 0 80px #00fff2;
-                transform: scale(1.02);
-            }
-        }
-
-        .welcome-subtitle {
-            font-size: 2.5em;
-            color: #00fff2;
-            margin-bottom: 50px;
+            font-size: 32px;
             font-weight: bold;
-            text-shadow: 0 0 20px rgba(0, 255, 242, 0.8);
-            animation: pulse 2s ease-in-out infinite;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .animated-text {
+            font-size: 24px;
+            margin-bottom: 40px;
+            animation: colorChange 3s infinite, pulse 2s infinite;
+            text-align: center;
         }
 
-        .enter-button {
-            padding: 18px 60px;
-            font-size: 1.3em;
-            background: linear-gradient(135deg, #00fff2, #00b8d4);
-            color: #0a1128;
+        .enter-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: #fff;
+            color: #667eea;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 30px rgba(0, 255, 242, 0.5);
-            transition: all 0.3s ease;
-            animation: buttonPulse 2s ease-in-out infinite;
             font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeIn 1.5s ease-out;
         }
 
-        @keyframes buttonPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 5px 30px rgba(0, 255, 242, 0.5); }
-            50% { transform: scale(1.08); box-shadow: 0 8px 40px rgba(0, 255, 242, 0.8); }
+        .enter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
         }
 
-        .enter-button:hover {
-            transform: scale(1.12) !important;
-            box-shadow: 0 10px 50px rgba(0, 255, 242, 1) !important;
-        }
-
-        /* Main Content */
-        .container {
+        /* Main Website */
+        #mainWebsite {
+            display: none;
+            padding: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease-in;
         }
 
-        .container.show {
-            opacity: 1;
-        }
-
-        /* Header dengan efek neon */
-        header {
-            text-align: center;
-            padding: 40px 0;
-            color: white;
-        }
-
-        .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 15px;
-            margin-bottom: 25px;
-            border: 3px solid #00fff2;
-            box-shadow: 0 0 30px rgba(0, 255, 242, 0.6);
-            animation: logoGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes logoGlow {
-            0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 242, 0.6); }
-            50% { box-shadow: 0 0 50px rgba(0, 255, 242, 1); }
-        }
-
-        h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px #00fff2, 0 0 40px #00fff2;
-            animation: slideDown 1s ease-out;
-            color: #00fff2;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* Tab Navigation mirip RioxxPayment */
-        .tab-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            padding: 18px 50px;
-            font-size: 1.3em;
-            background: rgba(30, 30, 46, 0.8);
-            color: white;
-            border: 2px solid rgba(0, 255, 242, 0.3);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-
-        .tab-button.active {
-            background: #00fff2;
-            color: #0a1128;
-            border-color: #00fff2;
-            transform: scale(1.05);
-            box-shadow: 0 5px 30px rgba(0, 255, 242, 0.6);
-            font-weight: bold;
-        }
-
-        .tab-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 20px rgba(0, 255, 242, 0.4);
-            border-color: #00fff2;
-        }
-
-        /* Content Sections */
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        .content-section.active {
+        #mainWebsite.active {
             display: block;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        header {
+            text-align: center;
+            padding: 30px 0;
         }
 
-        /* Product Cards dengan style dark modern */
-        .product-card {
-            background: rgba(30, 30, 46, 0.9);
-            border: 2px solid rgba(0, 255, 242, 0.2);
+        header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            overflow-x: auto;
+            padding: 10px;
+        }
+
+        .tab {
+            padding: 12px 30px;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid #fff;
             border-radius: 25px;
-            padding: 35px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .tab.active {
+            background: #fff;
+            color: #667eea;
+        }
+
+        .tab:hover {
+            transform: scale(1.05);
+        }
+
+        /* Content Area */
+        .content-wrapper {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .product-card, .payment-card {
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(10px);
-        }
-
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(0, 255, 242, 0.3);
-            border-color: #00fff2;
-        }
-
-        .product-card h2 {
-            color: #00fff2;
+            padding: 25px;
+            border-radius: 15px;
             margin-bottom: 20px;
-            font-size: 2em;
-            text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover, .payment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .product-card h3 {
-            color: #00fff2;
-            margin: 25px 0 15px 0;
-            font-size: 1.4em;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .product-card p {
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
         .price {
-            color: #00fff2;
-            font-size: 1.6em;
+            font-size: 22px;
             font-weight: bold;
+            color: #ffd700;
             margin: 15px 0;
-            text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
         }
 
         .benefits {
-            background: rgba(0, 255, 242, 0.05);
-            border: 1px solid rgba(0, 255, 242, 0.2);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-        }
-
-        .benefits ul {
-            list-style: none;
-            padding-left: 0;
+            margin: 15px 0;
         }
 
         .benefits li {
-            padding: 10px 0;
-            padding-left: 35px;
-            position: relative;
-            color: #e0e0e0;
-            font-size: 1.05em;
+            margin: 8px 0;
+            padding-left: 20px;
         }
 
-        .benefits li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #00fff2;
-            font-weight: bold;
-            font-size: 1.4em;
-        }
-
-        .order-button {
+        .order-btn {
             display: inline-block;
-            padding: 15px 45px;
-            background: linear-gradient(135deg, #00fff2, #00b8d4);
-            color: #0a1128;
+            padding: 12px 30px;
+            background: #ffd700;
+            color: #333;
             text-decoration: none;
-            border-radius: 50px;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 255, 242, 0.4);
-            font-weight: bold;
-            font-size: 1.05em;
-        }
-
-        .order-button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 30px rgba(0, 255, 242, 0.7);
-        }
-
-        /* Payment Section */
-        .payment-card {
-            background: rgba(30, 30, 46, 0.9);
-            border: 2px solid rgba(0, 255, 242, 0.3);
             border-radius: 25px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
         }
 
-        .payment-card h2 {
-            color: #00fff2;
-            font-size: 2.2em;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(0, 255, 242, 0.5);
+        .order-btn:hover {
+            background: #ffed4e;
+            transform: scale(1.05);
         }
 
-        .payment-card h3 {
-            color: #00fff2;
-            font-size: 1.6em;
-            margin: 30px 0 20px 0;
-        }
-
-        .payment-logo {
-            width: 180px;
-            height: auto;
+        .payment-method {
             margin: 20px 0;
-            border-radius: 15px;
-            border: 2px solid rgba(0, 255, 242, 0.3);
         }
 
-        .qris-image {
-            width: 320px;
+        .payment-method img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .testimony-img {
             max-width: 100%;
-            height: auto;
-            margin: 20px 0;
-            border: 3px solid #00fff2;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0, 255, 242, 0.4);
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .payment-info {
-            font-size: 1.3em;
-            color: #e0e0e0;
-            margin: 15px 0;
-            font-weight: bold;
+        /* Animations */
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            color: #00fff2;
-            font-size: 1.4em;
-            margin-top: 50px;
-            text-shadow: 0 0 15px rgba(0, 255, 242, 0.5);
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Music Control */
-        .music-control {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: rgba(0, 255, 242, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 12px 25px;
-            border-radius: 50px;
-            border: 2px solid #00fff2;
-            box-shadow: 0 5px 20px rgba(0, 255, 242, 0.3);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            color: #00fff2;
-            font-weight: bold;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
-        .music-control:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(0, 255, 242, 0.6);
+        @keyframes colorChange {
+            0% { color: #fff; }
+            25% { color: #ffd700; }
+            50% { color: #ff69b4; }
+            75% { color: #00ff00; }
+            100% { color: #fff; }
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .welcome-text { font-size: 1.6em; }
-            .welcome-subtitle { font-size: 1.8em; }
-            .welcome-logo { width: 140px; height: 140px; }
-            h1 { font-size: 2em; }
-            .tab-button { padding: 15px 35px; font-size: 1.1em; }
-            .product-card { padding: 25px; }
-            .product-card h2 { font-size: 1.6em; }
-            .qris-image { width: 280px; }
+            .welcome-text {
+                font-size: 24px;
+            }
+            .animated-text {
+                font-size: 18px;
+            }
+            header h1 {
+                font-size: 28px;
+            }
+            .tabs {
+                flex-wrap: nowrap;
+            }
+        }
+
+        audio {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Welcome Screen -->
-    <div class="welcome-screen" id="welcomeScreen">
-        <img src="https://files.catbox.moe/1zcfdv.jpg" alt="Logo" class="welcome-logo">
-        <div class="welcome-text">Selamat Datang Di</div>
-        <div class="welcome-subtitle">FARID SHOP OFFICIAL</div>
-        <button class="enter-button" onclick="enterWebsite()">KLIK UNTUK MASUK</button>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container" id="mainContent">
-        <header>
-            <img src="https://files.catbox.moe/1zcfdv.jpg" alt="Farid Shop Logo" class="logo">
-            <h1>FARID SHOP OFFICIAL</h1>
-        </header>
-
-        <div class="tab-container">
-            <button class="tab-button active" onclick="showTab('produk')">Produk</button>
-            <button class="tab-button" onclick="showTab('payment')">Payment</button>
-        </div>
-
-        <!-- Produk Section -->
-        <div id="produk" class="content-section active">
-            <!-- Pembuatan Web -->
-            <div class="product-card">
-                <h2>🌐 OPEN PEMBUATAN WEB</h2>
-                <div class="price">Rp. 15.000</div>
-                <div class="benefits">
-                    <h3>KEUNTUNGAN:</h3>
-                    <ul>
-                        <li>BEBAS REQ NAMA WEB</li>
-                        <li>BEBAS REQ BACKGROUND WEB</li>
-                        <li>BEBAS KASIH LOGO SESUKA LU</li>
-                        <li>WEB ON TERUS 24JAM</li>
-                    </ul>
-                </div>
-                <a href="https://wa.me/6287780575005?text=order+pembuatan+web+bang" class="order-button">PESAN SEKARANG</a>
-            </div>
-
-            <!-- Bot Push Kontak -->
-            <div class="product-card">
-                <h2>🤖 SEWA BOT PUSH KONTAK HARIAN</h2>
-                <h3>LIST HARGA ORDER</h3>
-                
-                <div class="price">1 HARI: Rp. 2.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+push+1+hari+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">2 HARI: Rp. 3.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+push+2+hari+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">3 HARI: Rp. 4.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+push+3+hari+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">5 HARI: Rp. 5.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+push+4+hari+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">PERMANEN: Rp. 20.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+push+permanen+bang" class="order-button">PESAN SEKARANG</a>
-
-                <div class="benefits">
-                    <h3>KEUNTUNGAN SEWA:</h3>
-                    <ul>
-                        <li>BOT ANTI DELAY 100%</li>
-                        <li>BOT BEBAS SC & FITUR LAINNYA</li>
-                        <li>BOT BEBAS PUSH KONTAK SAMPE PAGI & MALEM</li>
-                        <li>BOT MATI SAAT BATAS WAKTU BELUM SELESAI FREE 5 JAM</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Panel Run Bot -->
-            <div class="product-card">
-                <h2>💻 BUY PANEL RUN BOT</h2>
-                <h3>LIST HARGA ORDER</h3>
-                
-                <div class="price">1GB: Rp. 1.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">2GB: Rp. 2.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">3GB: Rp. 3.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">4GB: Rp. 4.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">5GB: Rp. 5.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">UNLIMITED: Rp. 15.000</div>
-                <a href="https://wa.me/6287780575005?text=order+panel+unlimited+bang" class="order-button">PESAN SEKARANG</a>
-
-                <div class="benefits">
-                    <h3>KEUNTUNGAN BUY PANEL RUN BOT:</h3>
-                    <ul>
-                        <li>PANEL BEBAS PASANG SC</li>
-                        <li>PANEL ANTI DELAY 100%</li>
-                        <li>PANEL ON 24 JAM</li>
-                        <li>PANEL MASA AKTIF 30 HARI</li>
-                        <li>PANEL ANTI BOBOL</li>
-                        <li>PANEL GARANSI 15 HARI (1X FREE PEMBUATAN PANEL ULANG)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bot Jaga Grup -->
-            <div class="product-card">
-                <h2>🛡️ OPEN ORDER BOT JAGA GRUP</h2>
-                
-                <div class="price">1 MINGGU: Rp. 5.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+1+minggu+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">2 MINGGU: Rp. 10.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+2+minggu+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">1 BULAN: Rp. 15.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+1+bulan+bang" class="order-button">PESAN SEKARANG</a>
-                
-                <div class="price">PERMANEN: Rp. 25.000</div>
-                <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+permanen+bang" class="order-button">PESAN SEKARANG</a>
-
-                <div class="benefits">
-                    <h3>KEUNTUNGAN SEWA BOT JAGA GB:</h3>
-                    <ul>
-                        <li>BOT PASTI ON 24 JAM</li>
-                        <li>BOT DI JAMIN ANTI DELAY</li>
-                        <li>BOT MOKAD FREE PEMASANGAN, SAAT BATAS WAKTU BELUM KE LEWAT</li>
-                        <li>BOT DI JAMIN ANTI LINK DLL.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Rename Script -->
-            <div class="product-card">
-                <h2>📝 OPEN RENAME SCRIPT</h2>
-                <div class="price">Rp. 5.000</div>
-                <div class="benefits">
-                    <h3>KEUNTUNGAN:</h3>
-                    <ul>
-                        <li>SCRIPT BEBAS REQ NAMA</li>
-                        <li>SCRIPT DI JAMIN AMAN SAAT RENAME</li>
-                        <li>SCRIPT ANTI GAGAL</li>
-                        <li>SCRIPT GARANSI 7 HARI</li>
-                    </ul>
-                </div>
-                <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="order-button">PESAN SEKARANG</a>
-            </div>
-        </div>
-
-        <!-- Payment Section -->
-        <div id="payment" class="content-section">
-            <div class="payment-card">
-                <h2>💳 METODE PEMBAYARAN</h2>
-                
-                <h3>DANA</h3>
-                <img src="https://files.catbox.moe/v3wdtm.jpg" alt="DANA Logo" class="payment-logo">
-                <div class="payment-info">081563618397</div>
-                <div class="payment-info">A/N: TRIWULAN SARI</div>
-                
-                <hr style="margin: 40px 0; border: 1px solid rgba(0, 255, 242, 0.3);">
-                
-                <h3>QRIS</h3>
-                <div class="payment-info">SCAN QR CODE DIBAWAH INI</div>
-                <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS" class="qris-image">
-            </div>
-        </div>
-
-        <footer>
-            <h2>TERIMAKASIH SUDAH MAU ORDER DI FARID SHOP</h2>
-        </footer>
-    </div>
-
     <!-- Background Music -->
     <audio id="bgMusic" loop>
         <source src="https://files.catbox.moe/3m6u74.mp4" type="audio/mp4">
     </audio>
 
-    <div class="music-control" onclick="toggleMusic()">
-        <span id="musicIcon">🔊</span> <span id="musicText">Musik ON</span>
+    <!-- Landing Page -->
+    <div id="landingPage">
+        <div class="logo-container">
+            <img src="https://files.catbox.moe/810tg8.jpg" alt="Farid Shop Logo">
+        </div>
+        <div class="welcome-text">
+            SELAMAT DATANG DI
+        </div>
+        <div class="animated-text">
+            FARID SHOP OFFICIAL
+        </div>
+        <button class="enter-btn" onclick="enterWebsite()">KLIK UNTUK MASUK</button>
+    </div>
+
+    <!-- Main Website -->
+    <div id="mainWebsite">
+        <header>
+            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo">
+            <h1>FARID SHOP OFFICIAL</h1>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('produk')">PRODUK KAMI</div>
+            <div class="tab" onclick="showTab('payment')">PAYMENT</div>
+            <div class="tab" onclick="showTab('testimoni')">TESTIMONI</div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Tab Produk -->
+            <div id="produk" class="tab-content active">
+                <div class="product-card">
+                    <h3>🌐 PEMBUATAN WEB PAYMENT</h3>
+                    <p class="price">Rp. 15.000</p>
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN:</strong></p>
+                        <ul>
+                            <li>✅ BEBAS REQ NAMA WEB</li>
+                            <li>✅ BEBAS REQ BACKGROUND WEB</li>
+                            <li>✅ BEBAS KASIH LOGO SESUKA LU</li>
+                            <li>✅ WEB ON TERUS 24JAM</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6287780575005?text=order+pembuatan+web+bang" class="order-btn">PESAN SEKARANG</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>🤖 SEWA BOT PUSH KONTAK HARIAN</h3>
+                    <p class="price">1 HARI: Rp. 2.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+push+1+hari+bang" class="order-btn">ORDER 1 HARI</a>
+                    
+                    <p class="price">2 HARI: Rp. 3.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+push+2+hari+bang" class="order-btn">ORDER 2 HARI</a>
+                    
+                    <p class="price">3 HARI: Rp. 4.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+push+3+hari+bang" class="order-btn">ORDER 3 HARI</a>
+                    
+                    <p class="price">5 HARI: Rp. 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+push+4+hari+bang" class="order-btn">ORDER 5 HARI</a>
+                    
+                    <p class="price">PERMANEN: Rp. 20.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+push+permanen+bang" class="order-btn">ORDER PERMANEN</a>
+                    
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN SEWA:</strong></p>
+                        <ul>
+                            <li>✅ BOT ANTI DELAY 100%</li>
+                            <li>✅ BOT BEBAS SC & FITUR LAINNYA</li>
+                            <li>✅ BOT BEBAS PUSH KONTAK SAMPE PAGI & MALEM</li>
+                            <li>✅ BOT MATI SAAT BATAS WAKTU BELUM SELESAI FREE 5 JAM</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <h3>💻 BUY PANEL RUN BOT</h3>
+                    <p class="price">1GB: Rp. 1.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="order-btn">ORDER 1GB</a>
+                    
+                    <p class="price">2GB: Rp. 2.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="order-btn">ORDER 2GB</a>
+                    
+                    <p class="price">3GB: Rp. 3.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="order-btn">ORDER 3GB</a>
+                    
+                    <p class="price">4GB: Rp. 4.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="order-btn">ORDER 4GB</a>
+                    
+                    <p class="price">5GB: Rp. 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="order-btn">ORDER 5GB</a>
+                    
+                    <p class="price">UNLIMITED: Rp. 15.000</p>
+                    
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN BUY PANEL RUN BOT:</strong></p>
+                        <ul>
+                            <li>✅ PANEL BEBAS PASANG SC</li>
+                            <li>✅ PANEL ANTI DELAY 100%</li>
+                            <li>✅ PANEL ON 24 JAM</li>
+                            <li>✅ PANEL MASA AKTIF 30 HARI</li>
+                            <li>✅ PANEL ANTI BOBOL</li>
+                            <li>✅ PANEL GARANSI 15 HARI (1X FREE PEMBUATAN PANEL ULANG)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <h3>🛡️ BOT JAGA GRUP</h3>
+                    <p class="price">1 MINGGU: Rp. 5.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 1 MINGGU</a>
+                    
+                    <p class="price">2 MINGGU: Rp. 10.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 2 MINGGU</a>
+                    
+                    <p class="price">1 BULAN: Rp. 15.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 1 BULAN</a>
+                    
+                    <p class="price">PERMANEN: Rp. 25.000</p>
+                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER PERMANEN</a>
+                    
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN SEWA BOT JAGA GB:</strong></p>
+                        <ul>
+                            <li>✅ BOT PASTI ON 24 JAM</li>
+                            <li>✅ BOT DI JAMIN ANTI DELAY</li>
+                            <li>✅ BOT MOKAD FREE PEMASANGAN</li>
+                            <li>✅ BOT DI JAMIN ANTI LINK DLL</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <h3>📝 RENAME SCRIPT</h3>
+                    <p class="price">Rp. 5.000</p>
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN:</strong></p>
+                        <ul>
+                            <li>✅ SCRIPT BEBAS REQ NAMA</li>
+                            <li>✅ SCRIPT DI JAMIN AMAN SAAT RENAME</li>
+                            <li>✅ SCRIPT ANTI GAGAL</li>
+                            <li>✅ SCRIPT GARANSI 7 HARI</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="order-btn">PESAN SEKARANG</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>👥 RESELLER PERMANEN</h3>
+                    <p class="price">Rp. 10.000</p>
+                    <div class="benefits">
+                        <p><strong>KEUNTUNGAN RESELLER:</strong></p>
+                        <ul>
+                            <li>✅ BISA CREATER PANEL</li>
+                            <li>✅ BISA OPEN SEWA BOT & JUAL PANEL</li>
+                            <li>✅ ANTI PT PT KALO MOKAD</li>
+                            <li>✅ DI JAMIN BALMOD JIKA ADA NIAT</li>
+                            <li>✅ FRESH BARU INSTAN</li>
+                            <li>✅ CREATER BOT 24JAM NO STOP</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/6287789575005?text=bang+mau+join+reseller" class="order-btn">JOIN RESELLER</a>
+                </div>
+            </div>
+
+            <!-- Tab Payment -->
+            <div id="payment" class="tab-content">
+                <div class="payment-card">
+                    <h3>💳 METODE PEMBAYARAN</h3>
+                    
+                    <div class="payment-method">
+                        <h4>DANA</h4>
+                        <img src="https://files.catbox.moe/v3wdtm.jpg" alt="Logo Dana">
+                        <p><strong>Nomor:</strong> 081563618397</p>
+                        <p><strong>Atas Nama:</strong> TRIWULAN SARI</p>
+                    </div>
+
+                    <div class="payment-method">
+                        <h4>QRIS</h4>
+                        <p>Scan QR Code dibawah ini:</p>
+                        <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Testimoni -->
+            <div id="testimoni" class="tab-content">
+                <div class="payment-card">
+                    <h3>⭐ TESTIMONI BOT PUSH KONTAK</h3>
+                    
+                    <h4>TESTIMONI V1</h4>
+                    <img src="https://files.catbox.moe/hj0hft.jpg" alt="Testimoni 1" class="testimony-img">
+                    
+                    <h4>TESTIMONI V2</h4>
+                    <img src="https://files.catbox.moe/dc1s1i.jpg" alt="Testimoni 2" class="testimony-img">
+                    
+                    <h4>TESTIMONI V3</h4>
+                    <img src="https://files.catbox.moe/srvlfx.jpg" alt="Testimoni 3" class="testimony-img">
+                    
+                    <h4>TESTIMONI V4</h4>
+                    <img src="https://files.catbox.moe/79wqiu.jpg" alt="Testimoni 4" class="testimony-img">
+                    
+                    <h4>TESTIMONI V5</h4>
+                    <img src="https://files.catbox.moe/m1l4t9.jpg" alt="Testimoni 5" class="testimony-img">
+                    
+                    <p style="margin-top: 30px; text-align: center; font-size: 20px;">
+                        <strong>TERIMAKASIH SUDAH MAU ORDER ALL PRODUK DI FARID SHOP</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
-        let musicPlaying = false;
-        const music = document.getElementById('bgMusic');
-
         function enterWebsite() {
-            document.getElementById('welcomeScreen').classList.add('hide');
+            const landing = document.getElementById('landingPage');
+            const main = document.getElementById('mainWebsite');
+            const music = document.getElementById('bgMusic');
+            
+            landing.classList.add('hidden');
             setTimeout(() => {
-                document.getElementById('mainContent').classList.add('show');
-                playMusic();
+                landing.style.display = 'none';
+                main.classList.add('active');
             }, 500);
-        }
-
-        function playMusic() {
-            music.play().then(() => {
-                musicPlaying = true;
-                document.getElementById('musicIcon').textContent = '🔊';
-                document.getElementById('musicText').textContent = 'Musik ON';
-            }).catch(err => {
-                console.log('Autoplay prevented:', err);
-            });
-        }
-
-        function toggleMusic() {
-            if (musicPlaying) {
-                music.pause();
-                musicPlaying = false;
-                document.getElementById('musicIcon').textContent = '🔇';
-                document.getElementById('musicText').textContent = 'Musik OFF';
-            } else {
-                playMusic();
-            }
+            
+            // Play background music
+            music.play().catch(e => console.log('Autoplay prevented'));
         }
 
         function showTab(tabName) {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-
-            const buttons = document.querySelectorAll('.tab-button');
-            buttons.forEach(button => {
-                button.classList.remove('active');
-            });
-
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Remove active class from all tab buttons
+            const tabBtns = document.querySelectorAll('.tab');
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            // Show selected tab
             document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab button
             event.target.classList.add('active');
+        }
+
+        // Swipe functionality for mobile
+        let startX = 0;
+        let currentTab = 0;
+        const tabNames = ['produk', 'payment', 'testimoni'];
+
+        document.querySelector('.content-wrapper').addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        });
+
+        document.querySelector('.content-wrapper').addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0 && currentTab < tabNames.length - 1) {
+                    currentTab++;
+                } else if (diff < 0 && currentTab > 0) {
+                    currentTab--;
+                }
+                
+                showTabByIndex(currentTab);
+            }
+        });
+
+        function showTabByIndex(index) {
+            const tabs = document.querySelectorAll('.tab-content');
+            const tabBtns = document.querySelectorAll('.tab');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabNames[index]).classList.add('active');
+            tabBtns[index].classList.add('active');
         }
     </script>
 </body>
