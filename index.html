@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Farid Shop Official</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,248 +14,51 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Landing Page */
-        #landingPage {
+        #bg-video {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
 
-        #landingPage.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
         }
 
-        .logo-container {
-            margin-bottom: 30px;
-            animation: fadeInScale 1s ease-out;
-        }
-
-        .logo-container img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .welcome-text {
-            font-size: 32px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 20px;
-            animation: slideDown 1s ease-out;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .animated-text {
-            font-size: 24px;
-            margin-bottom: 40px;
-            animation: colorChange 3s infinite, pulse 2s infinite;
-            text-align: center;
-        }
-
-        .enter-btn {
-            padding: 15px 40px;
-            font-size: 18px;
-            background: #fff;
-            color: #667eea;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .enter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        /* Main Website */
-        #mainWebsite {
-            display: none;
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        #mainWebsite.active {
-            display: block;
-        }
-
-        header {
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        header img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #fff;
-            margin-bottom: 15px;
-        }
-
-        header h1 {
-            font-size: 36px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 30px 0;
-            overflow-x: auto;
-            padding: 10px;
-        }
-
-        .tab {
-            padding: 12px 30px;
-            background: rgba(255,255,255,0.2);
-            border: 2px solid #fff;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-
-        .tab.active {
-            background: #fff;
-            color: #667eea;
-        }
-
-        .tab:hover {
-            transform: scale(1.05);
-        }
-
-        /* Content Area */
-        .content-wrapper {
-            position: relative;
-            overflow: hidden;
-            min-height: 500px;
-        }
-
-        .tab-content {
-            display: none;
-            animation: slideIn 0.5s ease-out;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .product-card, .payment-card {
-            background: rgba(255,255,255,0.15);
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideUp 0.8s ease;
+            margin: 20px;
         }
 
-        .product-card:hover, .payment-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .product-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #ffd700;
-        }
-
-        .product-card p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            font-size: 22px;
-            font-weight: bold;
-            color: #ffd700;
-            margin: 15px 0;
-        }
-
-        .benefits {
-            margin: 15px 0;
-        }
-
-        .benefits li {
-            margin: 8px 0;
-            padding-left: 20px;
-        }
-
-        .order-btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #ffd700;
-            color: #333;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s;
-        }
-
-        .order-btn:hover {
-            background: #ffed4e;
-            transform: scale(1.05);
-        }
-
-        .payment-method {
-            margin: 20px 0;
-        }
-
-        .payment-method img {
-            max-width: 200px;
-            border-radius: 10px;
-            margin: 10px 0;
-        }
-
-        .testimony-img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin: 10px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        /* Animations */
-        @keyframes fadeInScale {
+        @keyframes slideUp {
             from {
                 opacity: 0;
-                transform: scale(0.5);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
+                transform: translateY(50px);
             }
             to {
                 opacity: 1;
@@ -262,343 +66,168 @@
             }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 5px solid #fff;
         }
 
-        @keyframes colorChange {
-            0% { color: #fff; }
-            25% { color: #ffd700; }
-            50% { color: #ff69b4; }
-            75% { color: #00ff00; }
-            100% { color: #fff; }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
         }
 
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .subtitle {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 35px;
+            font-weight: 500;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .welcome-text {
-                font-size: 24px;
-            }
-            .animated-text {
-                font-size: 18px;
-            }
-            header h1 {
-                font-size: 28px;
-            }
-            .tabs {
-                flex-wrap: nowrap;
-            }
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
         }
 
-        audio {
-            display: none;
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 18px 30px;
+            text-decoration: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.5s ease;
+        }
+
+        .social-btn:hover::before {
+            left: 100%;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-btn i {
+            font-size: 1.5em;
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+        }
+
+        .instagram {
+            background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+        }
+
+        .channel {
+            background: linear-gradient(135deg, #00E676 0%, #00C853 100%);
+        }
+
+        .warning {
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            border-radius: 15px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95em;
+            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .warning i {
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            .social-btn {
+                font-size: 1em;
+                padding: 15px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Background Music -->
-    <audio id="bgMusic" loop>
-        <source src="https://files.catbox.moe/3m6u74.mp4" type="audio/mp4">
-    </audio>
+    <video id="bg-video" autoplay loop muted playsinline>
+        <source src="https://files.catbox.moe/e77m8i.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
 
-    <!-- Landing Page -->
-    <div id="landingPage">
-        <div class="logo-container">
-            <img src="https://files.catbox.moe/810tg8.jpg" alt="Farid Shop Logo">
-        </div>
-        <div class="welcome-text">
-            SELAMAT DATANG DI
-        </div>
-        <div class="animated-text">
-            FARID SHOP OFFICIAL
-        </div>
-        <button class="enter-btn" onclick="enterWebsite()">KLIK UNTUK MASUK</button>
-    </div>
-
-    <!-- Main Website -->
-    <div id="mainWebsite">
-        <header>
-            <img src="https://files.catbox.moe/810tg8.jpg" alt="Logo">
-            <h1>FARID SHOP OFFICIAL</h1>
-        </header>
-
-        <div class="tabs">
-            <div class="tab active" onclick="showTab('produk')">PRODUK KAMI</div>
-            <div class="tab" onclick="showTab('payment')">PAYMENT</div>
-            <div class="tab" onclick="showTab('testimoni')">TESTIMONI</div>
+    <div class="container">
+        <div class="logo">
+            <img src="https://wyiiofficial.vercel.app/logo.png" alt="Logo" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect fill=%22%23667eea%22 width=%22100%22 height=%22100%22/%3E%3Ctext x=%2250%22 y=%2250%22 font-size=%2240%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22%3EFS%3C/text%3E%3C/svg%3E'">
         </div>
 
-        <div class="content-wrapper">
-            <!-- Tab Produk -->
-            <div id="produk" class="tab-content active">
-                <div class="product-card">
-                    <h3>🌐 PEMBUATAN WEB PAYMENT</h3>
-                    <p class="price">Rp. 15.000</p>
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN:</strong></p>
-                        <ul>
-                            <li>✅ BEBAS REQ NAMA WEB</li>
-                            <li>✅ BEBAS REQ BACKGROUND WEB</li>
-                            <li>✅ BEBAS KASIH LOGO SESUKA LU</li>
-                            <li>✅ WEB ON TERUS 24JAM</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6287780575005?text=order+pembuatan+web+bang" class="order-btn">PESAN SEKARANG</a>
-                </div>
+        <h1>FARID SHOP OFFICIAL</h1>
+        <p class="subtitle">ORDER LANGSUNG AJA KE WA YOO</p>
 
-                <div class="product-card">
-                    <h3>🤖 SEWA BOT PUSH KONTAK HARIAN</h3>
-                    <p class="price">1 HARI: Rp. 2.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+push+1+hari+bang" class="order-btn">ORDER 1 HARI</a>
-                    
-                    <p class="price">2 HARI: Rp. 3.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+push+2+hari+bang" class="order-btn">ORDER 2 HARI</a>
-                    
-                    <p class="price">3 HARI: Rp. 4.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+push+3+hari+bang" class="order-btn">ORDER 3 HARI</a>
-                    
-                    <p class="price">5 HARI: Rp. 5.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+push+4+hari+bang" class="order-btn">ORDER 5 HARI</a>
-                    
-                    <p class="price">PERMANEN: Rp. 20.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+push+permanen+bang" class="order-btn">ORDER PERMANEN</a>
-                    
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN SEWA:</strong></p>
-                        <ul>
-                            <li>✅ BOT ANTI DELAY 100%</li>
-                            <li>✅ BOT BEBAS SC & FITUR LAINNYA</li>
-                            <li>✅ BOT BEBAS PUSH KONTAK SAMPE PAGI & MALEM</li>
-                            <li>✅ BOT MATI SAAT BATAS WAKTU BELUM SELESAI FREE 5 JAM</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="social-links">
+            <a href="https://wa.me/6287780575005" class="social-btn whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
 
-                <div class="product-card">
-                    <h3>💻 BUY PANEL RUN BOT</h3>
-                    <p class="price">1GB: Rp. 1.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+panel+1+gb+bang" class="order-btn">ORDER 1GB</a>
-                    
-                    <p class="price">2GB: Rp. 2.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+panel+2+gb+bang" class="order-btn">ORDER 2GB</a>
-                    
-                    <p class="price">3GB: Rp. 3.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+panel+3+gb+bang" class="order-btn">ORDER 3GB</a>
-                    
-                    <p class="price">4GB: Rp. 4.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+panel+4+gb+bang" class="order-btn">ORDER 4GB</a>
-                    
-                    <p class="price">5GB: Rp. 5.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+panel+5+gb+bang" class="order-btn">ORDER 5GB</a>
-                    
-                    <p class="price">UNLIMITED: Rp. 15.000</p>
-                    
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN BUY PANEL RUN BOT:</strong></p>
-                        <ul>
-                            <li>✅ PANEL BEBAS PASANG SC</li>
-                            <li>✅ PANEL ANTI DELAY 100%</li>
-                            <li>✅ PANEL ON 24 JAM</li>
-                            <li>✅ PANEL MASA AKTIF 30 HARI</li>
-                            <li>✅ PANEL ANTI BOBOL</li>
-                            <li>✅ PANEL GARANSI 15 HARI (1X FREE PEMBUATAN PANEL ULANG)</li>
-                        </ul>
-                    </div>
-                </div>
+            <a href="https://www.instagram.com/faridshopofficial?igsh=M2ZpeW16bnBlM2l0" class="social-btn instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
 
-                <div class="product-card">
-                    <h3>🛡️ BOT JAGA GRUP</h3>
-                    <p class="price">1 MINGGU: Rp. 5.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 1 MINGGU</a>
-                    
-                    <p class="price">2 MINGGU: Rp. 10.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 2 MINGGU</a>
-                    
-                    <p class="price">1 BULAN: Rp. 15.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER 1 BULAN</a>
-                    
-                    <p class="price">PERMANEN: Rp. 25.000</p>
-                    <a href="https://wa.me/6287780575005?text=order+bot+jaga+gb+bang" class="order-btn">ORDER PERMANEN</a>
-                    
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN SEWA BOT JAGA GB:</strong></p>
-                        <ul>
-                            <li>✅ BOT PASTI ON 24 JAM</li>
-                            <li>✅ BOT DI JAMIN ANTI DELAY</li>
-                            <li>✅ BOT MOKAD FREE PEMASANGAN</li>
-                            <li>✅ BOT DI JAMIN ANTI LINK DLL</li>
-                        </ul>
-                    </div>
-                </div>
+            <a href="https://whatsapp.com/channel/0029Vb9tOHiHrDZkWyDZo72W" class="social-btn channel" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>Saluran WhatsApp</span>
+            </a>
+        </div>
 
-                <div class="product-card">
-                    <h3>📝 RENAME SCRIPT</h3>
-                    <p class="price">Rp. 5.000</p>
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN:</strong></p>
-                        <ul>
-                            <li>✅ SCRIPT BEBAS REQ NAMA</li>
-                            <li>✅ SCRIPT DI JAMIN AMAN SAAT RENAME</li>
-                            <li>✅ SCRIPT ANTI GAGAL</li>
-                            <li>✅ SCRIPT GARANSI 7 HARI</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6287780575005?text=order+rename+sc+bang" class="order-btn">PESAN SEKARANG</a>
-                </div>
-
-                <div class="product-card">
-                    <h3>👥 RESELLER PERMANEN</h3>
-                    <p class="price">Rp. 10.000</p>
-                    <div class="benefits">
-                        <p><strong>KEUNTUNGAN RESELLER:</strong></p>
-                        <ul>
-                            <li>✅ BISA CREATER PANEL</li>
-                            <li>✅ BISA OPEN SEWA BOT & JUAL PANEL</li>
-                            <li>✅ ANTI PT PT KALO MOKAD</li>
-                            <li>✅ DI JAMIN BALMOD JIKA ADA NIAT</li>
-                            <li>✅ FRESH BARU INSTAN</li>
-                            <li>✅ CREATER BOT 24JAM NO STOP</li>
-                        </ul>
-                    </div>
-                    <a href="https://wa.me/6287789575005?text=bang+mau+join+reseller" class="order-btn">JOIN RESELLER</a>
-                </div>
-            </div>
-
-            <!-- Tab Payment -->
-            <div id="payment" class="tab-content">
-                <div class="payment-card">
-                    <h3>💳 METODE PEMBAYARAN</h3>
-                    
-                    <div class="payment-method">
-                        <h4>DANA</h4>
-                        <img src="https://files.catbox.moe/v3wdtm.jpg" alt="Logo Dana">
-                        <p><strong>Nomor:</strong> 081563618397</p>
-                        <p><strong>Atas Nama:</strong> TRIWULAN SARI</p>
-                    </div>
-
-                    <div class="payment-method">
-                        <h4>QRIS</h4>
-                        <p>Scan QR Code dibawah ini:</p>
-                        <img src="https://files.catbox.moe/db5rbs.jpg" alt="QRIS">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tab Testimoni -->
-            <div id="testimoni" class="tab-content">
-                <div class="payment-card">
-                    <h3>⭐ TESTIMONI BOT PUSH KONTAK</h3>
-                    
-                    <h4>TESTIMONI V1</h4>
-                    <img src="https://files.catbox.moe/hj0hft.jpg" alt="Testimoni 1" class="testimony-img">
-                    
-                    <h4>TESTIMONI V2</h4>
-                    <img src="https://files.catbox.moe/dc1s1i.jpg" alt="Testimoni 2" class="testimony-img">
-                    
-                    <h4>TESTIMONI V3</h4>
-                    <img src="https://files.catbox.moe/srvlfx.jpg" alt="Testimoni 3" class="testimony-img">
-                    
-                    <h4>TESTIMONI V4</h4>
-                    <img src="https://files.catbox.moe/79wqiu.jpg" alt="Testimoni 4" class="testimony-img">
-                    
-                    <h4>TESTIMONI V5</h4>
-                    <img src="https://files.catbox.moe/m1l4t9.jpg" alt="Testimoni 5" class="testimony-img">
-                    
-                    <p style="margin-top: 30px; text-align: center; font-size: 20px;">
-                        <strong>TERIMAKASIH SUDAH MAU ORDER ALL PRODUK DI FARID SHOP</strong>
-                    </p>
-                </div>
-            </div>
+        <div class="warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            HATI HATI TERHADAP CLONE YA GESS YANG REAL, HANYA DI WEB
         </div>
     </div>
-
-    <script>
-        function enterWebsite() {
-            const landing = document.getElementById('landingPage');
-            const main = document.getElementById('mainWebsite');
-            const music = document.getElementById('bgMusic');
-            
-            landing.classList.add('hidden');
-            setTimeout(() => {
-                landing.style.display = 'none';
-                main.classList.add('active');
-            }, 500);
-            
-            // Play background music
-            music.play().catch(e => console.log('Autoplay prevented'));
-        }
-
-        function showTab(tabName) {
-            // Hide all tabs
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            
-            // Remove active class from all tab buttons
-            const tabBtns = document.querySelectorAll('.tab');
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Show selected tab
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked tab button
-            event.target.classList.add('active');
-        }
-
-        // Swipe functionality for mobile
-        let startX = 0;
-        let currentTab = 0;
-        const tabNames = ['produk', 'payment', 'testimoni'];
-
-        document.querySelector('.content-wrapper').addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-        });
-
-        document.querySelector('.content-wrapper').addEventListener('touchend', e => {
-            const endX = e.changedTouches[0].clientX;
-            const diff = startX - endX;
-
-            if (Math.abs(diff) > 50) {
-                if (diff > 0 && currentTab < tabNames.length - 1) {
-                    currentTab++;
-                } else if (diff < 0 && currentTab > 0) {
-                    currentTab--;
-                }
-                
-                showTabByIndex(currentTab);
-            }
-        });
-
-        function showTabByIndex(index) {
-            const tabs = document.querySelectorAll('.tab-content');
-            const tabBtns = document.querySelectorAll('.tab');
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabNames[index]).classList.add('active');
-            tabBtns[index].classList.add('active');
-        }
-    </script>
 </body>
 </html>
